@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './Home.scss'
 
+import BathroomRow from '../../components/BathroomRow'
+
 const Hero = () => {
   return (
     <div className='hero'>
@@ -22,7 +24,7 @@ const ListingContainer = () => {
         Filters
       </div>
       <div className='bathroom-listings'>
-        Bathrooms
+        <BathroomRow className='bathroom-row'/>
       </div>
     </div>
   )
