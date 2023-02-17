@@ -10,6 +10,11 @@ import Review from "./pages/review/Review";
 function App() {
   return (
     <Router>
+      <nav>
+        <Link to="/"> Home </Link>
+        <Link to="/review"> Review </Link>
+        <Link to="/login"> Login </Link>
+      </nav>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/add-bathroom" element={<AddBathroom />} />
