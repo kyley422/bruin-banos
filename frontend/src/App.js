@@ -7,7 +7,6 @@ import Bathroom from "./pages/bathroom/Bathroom";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Review from "./pages/review/Review";
-
 import Navbar from "./components/Navbar";
 
 function App() {
