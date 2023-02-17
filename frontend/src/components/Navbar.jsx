@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import './Navbar.css'
+import './Navbar.scss'
 
 import SearchBar from './SearchBar'
 import Button from './Button'
