@@ -12,8 +12,7 @@ export default class Navbar extends Component {
             <Link to="/"> Home </Link>
             {!this.props.isAuth ? <Link to="/login"> Login </Link> : <button onClick={this.props.logOut}> Log Out </button>}
             <SearchBar />
-            <Link to="/review"> <Button /> </Link>
-           
+            <Link to={this.props.isAuth ? "/review" : "/login"}> <Button /> </Link>
         </nav>
     )
   }

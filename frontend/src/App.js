@@ -33,7 +33,7 @@ function App() {
           <Route path="/add-bathroom" element={<AddBathroom />} />
           <Route path="/bathroom" element={<Bathroom />} />
           <Route path="/login" element={<Login setIsAuth={setIsAuth}/>} />
-          <Route path="/review" element={<Review />} />
+          <Route path="/review" element={<Review isAuth={isAuth}/>} />
         </Routes>
       </Router>
     </React.Fragment>

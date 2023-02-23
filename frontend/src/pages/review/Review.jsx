@@ -1,9 +1,9 @@
-import React, { Component, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { addDoc, collection } from 'firebase/firestore'
 import { db, auth } from '../../firebase-config';
 import { useNavigate } from 'react-router-dom';
 
-function Review() {
+function Review( {isAuth} ) {
   const [title, setTitle] = useState("");
   const [reviewText, setReviewText] = useState("");
 
@@ -21,13 +21,18 @@ function Review() {
     navigate("/");
   };
 
+  useEffect(() => {
+    if (!isAuth) {
+      navigate("/login");
+    }
+  }, []);
 
   return (
     <div>
       <div>
         <h1>Create A Post</h1>
       </div>
-      <div className='inputGp'>
+      <div>
         <label> Title:</label>   
         <input 
           placeholder='Title...' 
@@ -36,7 +41,7 @@ function Review() {
           }}
         />
       </div>
-      <div className='inputGp'>
+      <div>
         <label> Review:</label>
         <textarea 
           placeholder='Review...' 
