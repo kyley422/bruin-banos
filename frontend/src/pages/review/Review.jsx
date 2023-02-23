@@ -1,9 +1,26 @@
 import React, { Component } from 'react'
 
-export default class Review extends Component {
-  render() {
-    return (
-      <div>Review</div>
-    )
-  }
+
+function Review() {
+  return (
+    <div>
+      <div>
+        <h1>Create A Post</h1>
+      </div>
+      <div className='inputGp'>
+        <label> Title:</label>   
+        <input placeholder='Title...' />
+      </div>
+      <div className='inputGp'>
+        <label> Post:</label>
+        <textarea placeholder='Review...' />
+      </div>
+      <button>
+        Submit Review
+      </button>
+
+    </div>
+  )
 }
+
+export default Review;
