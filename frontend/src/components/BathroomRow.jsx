@@ -6,11 +6,11 @@ export default class BathroomRow extends Component {
     return (
       <div className='bathroom-row'>
         <div className='image-container'>
-            <img src='https://i.imgur.com/Idl80gB.jpg' alt='Marion Anderson Hall' />
+            <img src={this.props.image} alt='Building' />
         </div>
         <div className='title-container'>
             <div className='title'>
-                Anderson 1224
+                {this.props.name}
             </div>
             <div className='gender'>
                 <img src='https://i.imgur.com/xmE2DNn.png' alt='Male' />

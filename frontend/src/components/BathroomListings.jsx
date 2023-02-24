@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import {getDocs, collection} from 'firebase/firestore' 
 import { db } from '../firebase-config';
+
 import BathroomRow from '../components/BathroomRow'
 
 function BathroomListings() {
@@ -14,8 +15,8 @@ function BathroomListings() {
         }
         getPosts()
     })
-    return <div className='bathroom-listings'>{bathroomList.map((post) => {
-        return <div className='bathroom-entry'>{post.name}</div>
+    return <div className='bathroom-listings'>{bathroomList.map((entry) => {
+        return <BathroomRow className='bathroom-entry' name={entry.name} image={entry.image}/>
     })}</div>
 }
 
