@@ -4,6 +4,18 @@ import { db } from '../firebase-config';
 
 import BathroomRow from '../components/BathroomRow'
 
+function getGenderIconURL(gender) {
+    switch(gender) {
+        case "male":
+            return "https://i.imgur.com/xmE2DNn.png"
+        case "female":
+            return "https://i.imgur.com/ZM70u3v.png"
+        // gender neutral
+        default:
+            return "https://i.imgur.com/NwvJX2F.png"
+    }
+}
+
 function BathroomListings() {
     const [bathroomList, setBathroomList] = useState([])
     const bathroomCollectionRef = collection(db,"bathroom")
@@ -16,7 +28,10 @@ function BathroomListings() {
         getPosts()
     })
     return <div className='bathroom-listings'>{bathroomList.map((entry) => {
-        return <BathroomRow className='bathroom-entry' name={entry.name} image={entry.image}/>
+        return <BathroomRow className='bathroom-entry' 
+        name={entry.name} 
+        image={entry.image} 
+        genderImageURL={getGenderIconURL(entry.gender)}/>
     })}</div>
 }
 

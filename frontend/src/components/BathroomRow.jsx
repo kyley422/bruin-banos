@@ -13,7 +13,7 @@ export default class BathroomRow extends Component {
                 {this.props.name}
             </div>
             <div className='gender'>
-                <img src='https://i.imgur.com/xmE2DNn.png' alt='Male' />
+                <img src={this.props.genderImageURL} alt='Gender' />
             </div>
         </div>
         <div className='overall-review-container'>
