@@ -23,9 +23,7 @@ const ListingContainer = () => {
       <div className='filter-container'>
         Filters
       </div>
-      <div className='bathroom-listings'>
-        <BathroomListings> </BathroomListings>
-      </div>
+    <BathroomListings />
     </div>
   )
 }
