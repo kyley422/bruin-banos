@@ -18,17 +18,17 @@ export default class BathroomRow extends Component {
         </div>
         <div className='overall-review-container'>
             <div className='poops'>
-                [Poops Placeholder]
+                [Poops Placeholder: {this.props.score_overall}]
             </div>
             <div className='overall-ratings'>
-                OVERALL (431 reviews)
+                OVERALL ({this.props.total_ratings})
             </div>
         </div>
         <div className='heart'>
             <img src='https://i.imgur.com/qmmXb0N.png' alt='Male' />
         </div>
         <div className='ratings'>
-            CLEANLINESS  5 | COMFORT 5 | CONVENIENCE 4.5 | AMENITIES 5
+            CLEANLINESS  <b>{this.props.score_cleanliness}</b> | COMFORT <b>{this.props.score_comfort}</b> | CONVENIENCE <b>{this.props.score_convenience}</b> | AMENITIES <b>{this.props.score_amenities}</b>
         </div>
         <div className='top-review'>
             <div className='top-review-bubble'>

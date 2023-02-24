@@ -31,7 +31,14 @@ function BathroomListings() {
         return <BathroomRow className='bathroom-entry' 
         name={entry.name} 
         image={entry.image} 
-        genderImageURL={getGenderIconURL(entry.gender)}/>
+        genderImageURL={getGenderIconURL(entry.gender)}
+        total_ratings={entry.total_ratings}
+        score_overall={entry.score_overall}
+        score_cleanliness={entry.score_cleanliness}
+        score_comfort={entry.score_comfort}
+        score_convenience={entry.score_convenience}
+        score_amenities={entry.score_amenities}
+        />
     })}</div>
 }
 
