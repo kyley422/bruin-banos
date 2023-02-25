@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles.css";
+// import "./styles.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import { auth } from "./firebase-config"
