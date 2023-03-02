@@ -38,7 +38,7 @@ export default class BathroomRow extends Component {
         </div>
         <div className='top-review-container'>
             <p className='top-review-content'>
-            “This bathroom was clean and well-maintained, with plenty of soap and paper towels available. The stalls were spacious and private, and the...” <b>Read More &gt;</b>
+            {this.props.top_review}
             </p>
         </div>
       </div>
