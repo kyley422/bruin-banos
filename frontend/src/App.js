@@ -11,6 +11,7 @@ import BathroomPage from "./pages/bathroom/BathroomPage";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Review from "./pages/review/Review";
+import Invalid from "./pages/invalid/Invalid";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="/bathroom/:bathroomId" element={<BathroomPage />} />
           <Route path="/login" element={<Login setIsAuth={setIsAuth}/>} />
           <Route path="/review" element={<Review isAuth={isAuth}/>} />
+          <Route path="/invalid" element={<Invalid />} />
         </Routes>
       </Router>
     </React.Fragment>

@@ -1,5 +1,3 @@
-import React, { Component } from 'react'
-
 function Bathroom() {
   return (
     <div>
