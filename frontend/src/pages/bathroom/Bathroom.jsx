@@ -1,9 +1,14 @@
-import React, { Component } from 'react'
-
-export default class Bathroom extends Component {
-  render() {
-    return (
+function Bathroom() {
+  return (
+    <div>
       <div>Bathroom</div>
-    )
-  }
+      <div>Bathroom</div>
+      <div>Bathroom</div>
+      <div>Bathroom</div>
+      <div>Bathroom</div>
+    </div>
+
+  );
 }
+
+export default Bathroom
