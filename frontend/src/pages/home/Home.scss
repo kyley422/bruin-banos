@@ -99,10 +99,21 @@
             }
         }
         .dropdown {
-
+            height: 25px;
+            width: 94%;
+            border-radius: 8px;
+            color: #6D6D6D;
+            margin-bottom: 20px;
         }
-        .line-selector {
-
+        .slider {
+            input {
+                padding: 0px;
+                margin: auto;
+                width: 82%;
+            }
+            .selectValue {
+                
+            }
         }
     }
     .bathroom-listings {

@@ -45,12 +45,24 @@ const ListingContainer = () => {
           </div>
         </div>
         <div className="filter-component">
-          <div className="filter-title">Sort</div>
-          <div className="dropdown"></div>
+          <div className="filter-title">Sort Rating</div>
+          <div className="dropdown-container">
+            <select className="dropdown">
+              <option value="Overall">Overall</option>
+              <option value="Cleanliness">Cleanliness</option>
+              <option value="Comfort">Comfort</option>
+              <option value="Convenience">Convenience</option>
+              <option value="Amenities">Amenities</option>
+            </select>
+          </div>
         </div>
         <div className="filter-component">
           <div className="filter-title">Range</div>
-          <div className="line-selector"></div>
+          <div className="slider">
+            <label>
+              <input type="range" min="0" max="5" defaultValue="3" id="slider"/>
+            </label>
+          </div>
         </div>
       </div>
       <BathroomListings />
