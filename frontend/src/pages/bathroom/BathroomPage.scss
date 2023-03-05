@@ -9,7 +9,9 @@ body {
   img {
     width: 2000px;
     height: 500px;
-    object-fit: fill;
+    object-fit: cover;
+
+    filter: brightness(70%);
   }
 
   .name {
@@ -18,11 +20,21 @@ body {
     left: 460px;
   
     color: white;
-    font-size: 40px;
+    font-size: 50px;
+    font-weight: 700;
+  }
+
+  .number {
+    position: absolute;
+    top: 170px;
+    left: 460px;
+  
+    color: rgb(200, 200, 200);
+    font-size: 50px;
     font-weight: 700;
   }
 }
 
-.number {
-  margin-top: 50px;
-}
+// .number {
+//   margin-top: 50px;
+// }

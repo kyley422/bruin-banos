@@ -44,10 +44,9 @@ function BathroomPage() {
             <div className='buildingimage'>
               <p id="my-image"><img src={bathroomData.image} alt='doddhall' /></p>
               <h3 className='name'>{bathroomData.name}</h3> 
+              <h3 className='number'>{bathroomData.number}</h3>
             </div>
 
-            <div className='name'>{bathroomData.name}</div>
-            <div className='number'>{bathroomData.number}</div>
             <div>Gender: {bathroomData.gender}</div>
             <div>Total Ratings: {bathroomData.total_ratings}</div>
             <div>Ameneties Score: {bathroomData.score_amenities}</div>
