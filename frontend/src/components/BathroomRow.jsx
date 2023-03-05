@@ -20,13 +20,6 @@ export default class BathroomRow extends Component {
         </div>
         <div className='overall-review-container'>
             <div className='poops'>
-                {/* {[...Array(5)].map((poops, i) => {
-                    // const ratingValue = i + 1;
-                    return (
-                        
-                        <img src='https://i.imgur.com/zeUE5V4.png' alt='Golden Poop' />
-                    )
-                })}  */}
                 {
                     {
                         0: <img src='https://i.imgur.com/vljxALF.png' alt='Poop Review 0' />,
@@ -40,11 +33,11 @@ export default class BathroomRow extends Component {
                         4: <img src='https://i.imgur.com/sBwRpE4.png' alt='Poop Review 4' />,
                         4.5: <img src='https://i.imgur.com/rzTx5vY.png' alt='Poop Review 4.5' />,
                         5: <img src='https://i.imgur.com/asIJDlm.png' alt='Poop Review 5' />
-                    }[Math.round(3.7 * 2) / 2]
+                    }[Math.round(this.props.score_overall * 2) / 2]
                 }
             </div>
             <div className='overall-ratings'>
-                OVERALL ({this.props.total_ratings})
+                {this.props.total_ratings}
             </div>
         </div>
         <div className='heart'>
