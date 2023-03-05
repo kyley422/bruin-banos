@@ -16,16 +16,11 @@ function getGenderIconURL(gender) {
     }
 }
 
-const getTopReview = async (ref) => {
-    const topReviewRef = doc(db, "reviews", ref)
-    const topReview = await getDoc(topReviewRef)
-    console.log(topReview.data())
-    return topReview
-}
 
 function BathroomListings() {
     const [bathroomList, setBathroomList] = useState([])
     const bathroomCollectionRef = collection(db,"bathroom")
+    const [topReviewText, setTopReviewText] = useState([])
 
     useEffect(() => {
         const getPosts = async () => {
@@ -34,22 +29,31 @@ function BathroomListings() {
         }
         getPosts()
     },[db])
-    return <div className='bathroom-listings'>{bathroomList.map((entry) => {
-        // console.log(entry)
-        console.log(entry.reviews[0])
+
+    const getTopReview = async (ref) => {
+        const topReviewRef = doc(db, "reviews", ref)
+        const topReview = await getDoc(topReviewRef)
+        console.log(topReview.data().reviewText)
+        setTopReviewText(topReview.data().reviewText)
+    }
+
+    return <div className='bathroom-listings'>
+    {bathroomList.map((entry) => {
+        getTopReview(entry.reviews[0])
         return <BathroomRow className='bathroom-entry' 
-        name={entry.name} 
-        image={entry.image} 
-        genderImageURL={getGenderIconURL(entry.gender)}
-        total_ratings={entry.total_ratings}
-        score_overall={entry.score_overall}
-        score_cleanliness={entry.score_cleanliness}
-        score_comfort={entry.score_comfort}
-        score_convenience={entry.score_convenience}
-        score_amenities={entry.score_amenities}
-        // top_review={entry.reviews}
+            name={entry.name} 
+            image={entry.image} 
+            genderImageURL={getGenderIconURL(entry.gender)}
+            total_ratings={entry.total_ratings}
+            score_overall={entry.score_overall}
+            score_cleanliness={entry.score_cleanliness}
+            score_comfort={entry.score_comfort}
+            score_convenience={entry.score_convenience}
+            score_amenities={entry.score_amenities}
+            top_review={"\"" + topReviewText}
         />
-    })}</div>
+    })}
+    </div>
 }
 
 export default BathroomListings
