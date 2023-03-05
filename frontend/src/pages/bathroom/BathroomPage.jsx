@@ -6,6 +6,8 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import './BathroomPage.scss'
+
 function BathroomPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [bathroomData, setBathroomData] = useState(null);
@@ -33,17 +35,19 @@ function BathroomPage() {
 
   return (
     // idk how to center things in the screen so to see the 
-    // text i added the 5 filler lines below
+    // text i added the 5 filler lines below 
+    // (fixed by hao)
     <div>
-      <div>Bathroom {bathroomId}</div>
-      <div>Bathroom {bathroomId}</div>
-      <div>Bathroom {bathroomId}</div>
-      <div>Bathroom {bathroomId}</div>
-      <div>Bathroom {bathroomId}</div>
 
       {!isLoading && (
         <>
-            <div>Name: {bathroomData.name}</div>
+            <div className='buildingimage'>
+              <p id="my-image"><img src={bathroomData.image} alt='doddhall' /></p>
+              <h3 className='name'>{bathroomData.name}</h3> 
+            </div>
+
+            <div className='name'>{bathroomData.name}</div>
+            <div className='number'>{bathroomData.number}</div>
             <div>Gender: {bathroomData.gender}</div>
             <div>Total Ratings: {bathroomData.total_ratings}</div>
             <div>Ameneties Score: {bathroomData.score_amenities}</div>

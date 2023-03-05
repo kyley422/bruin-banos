@@ -1,0 +1,28 @@
+body {
+  margin-top: 80px;
+}
+
+.buildingimage {
+  width:auto;
+  text-align:center;
+  
+  img {
+    width: 2000px;
+    height: 500px;
+    object-fit: fill;
+  }
+
+  .name {
+    position: absolute;
+    top: 100px;
+    left: 460px;
+  
+    color: white;
+    font-size: 40px;
+    font-weight: 700;
+  }
+}
+
+.number {
+  margin-top: 50px;
+}
