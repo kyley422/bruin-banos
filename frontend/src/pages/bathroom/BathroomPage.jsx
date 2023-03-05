@@ -31,7 +31,7 @@ function BathroomPage() {
         };
         
         getData();
-    })
+    },[db])
 
   return (
     // idk how to center things in the screen so to see the 
