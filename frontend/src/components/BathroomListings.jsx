@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import {doc, getDoc, get, getDocs, collection} from 'firebase/firestore' 
 import { db } from '../firebase-config';
 
@@ -20,7 +20,9 @@ function getGenderIconURL(gender) {
 function BathroomListings() {
     const [bathroomList, setBathroomList] = useState([])
     const bathroomCollectionRef = collection(db,"bathroom")
-    const [topReviewText, setTopReviewText] = useState([])
+    const [topReviewTexts, setTopReviewTexts] = useState([])
+
+    const firstUpdate = useRef(true)
 
     useEffect(() => {
         const getPosts = async () => {
@@ -30,17 +32,26 @@ function BathroomListings() {
         getPosts()
     },[db])
 
-    const getTopReview = async (ref) => {
-        const topReviewRef = doc(db, "reviews", ref)
-        const topReview = await getDoc(topReviewRef)
-        console.log(topReview.data().reviewText)
-        setTopReviewText(topReview.data().reviewText)
-    }
+    useEffect(() => {
+        const getTopReviews = async (ref) => {
+            const topReviewRef = doc(db, "reviews", ref)
+            const topReview = await getDoc(topReviewRef)
+            topReviewTexts.push(topReview.data().reviewText)
+            setTopReviewTexts(topReviewTexts)
+            console.log(topReviewTexts)
+        }
+        function mapReviews() {
+            bathroomList.map((entry) => {
+                getTopReviews(entry.reviews[0])
+                return 0
+            })
+        }
+        mapReviews()
+    },[bathroomList])
 
     return <div className='bathroom-listings'>
-    {bathroomList.map((entry) => {
-        getTopReview(entry.reviews[0])
-        return <BathroomRow className='bathroom-entry' 
+    {bathroomList.map((entry, index) => {
+        let current_bathroom_row = <BathroomRow className='bathroom-entry' key={entry.name} 
             name={entry.name} 
             image={entry.image} 
             genderImageURL={getGenderIconURL(entry.gender)}
@@ -50,8 +61,9 @@ function BathroomListings() {
             score_comfort={entry.score_comfort}
             score_convenience={entry.score_convenience}
             score_amenities={entry.score_amenities}
-            top_review={"\"" + topReviewText}
+            top_review={"\"" + topReviewTexts[index]}
         />
+        return current_bathroom_row
     })}
     </div>
 }
