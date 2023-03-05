@@ -1,52 +1,11 @@
 nav {
-    //margin-top: 5px;
+    margin: 0;
     width: 100%;
-    height: 60px;
-    font-size: 25px;
-
+    height: 80px;
+    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: blue;
-    background-color: white;
+    color: white;
     text-decoration: none;
-
-    
-    position: fixed;
-    top: 0;
-    z-index: 100;
-
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
-   
-  }
-
-  a { //general css class for Links
-    color: black;
-    
-  }
-
-  a.home {
-    color: #2774AE;
-    background-color: white;
-    font-weight: bold;
-    font-size: smaller;
-    margin-right: 10px;
-    margin-left: 5px;
-    text-decoration: none;
-    margin-bottom: 80px;
-  }
-
-  a.logo {
-    display: flex;
-    width: 40px;
-    height: 40px;
-    margin-right: 0px;
-    margin-left: 20px;
-    margin-bottom: 10px;
-  }
-
-  .profile {
-    width: 40px;
-    margin-right: 10px;
-    margin-top: 5px;
   }

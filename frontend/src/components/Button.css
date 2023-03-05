@@ -1,4 +1,4 @@
-/* review button */
+
 button {
     cursor: pointer;
     display: inline-block;
@@ -9,9 +9,6 @@ button {
     /* border: none; */
     background-color: #2774AE;
     color: white;
-    border-color: #2774AE;
-    border-style: solid;
-    border-width: 1px;
     border-radius: 20px;
     font: inter;
     font-size: 17px;
@@ -19,12 +16,6 @@ button {
     /* width: 15%;
     height: 40%; */
     width: 130px;
-    height: 30px;
-
-    transition: background-color 0.3s, color 0.3s;
+    height: 40px;
 }
 
-button:hover {
-    background-color: white;
-    color: #2774AE;
-}
