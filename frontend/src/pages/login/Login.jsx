@@ -2,33 +2,46 @@ import { auth, provider } from "../../firebase-config"
 import { signInWithPopup } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom';
 import { db } from "../../firebase-config";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs } from "firebase/firestore";
+import { query, where } from "firebase/firestore";
 
 function Login({ setIsAuth }) {
   let navigate = useNavigate();
 
   const usersCollectionRef = collection(db, "users");
-  var reviews = ["id1", "id2", "id3"]
-  var likedReviews = ["id4", "id5", "id6"]
+  
+  var reviews = []
+  var likedReviews = []
 
   const createUserDoc = async () => {
     await addDoc(usersCollectionRef, {
       id: auth.currentUser.uid, 
       name: auth.currentUser.displayName,
       reviews: reviews,
-      likes: likedReviews
+      likedReviews: likedReviews
     });
     navigate("/");
   };
+
+  const checkIfExists = async () => {
+    const q = query(usersCollectionRef, where('id', '==', auth.currentUser.uid))
+    const snapshot = await getDocs(q)
+
+    // If user doc doesn't exist, create a new user doc
+    if (snapshot.empty) {
+      console.log('User does not exist yet');
+      createUserDoc()
+    }  
+    else {
+      console.log('User already exists');
+    }
+  }
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider).then((result) => {
       localStorage.setItem("isAuth", true);
       setIsAuth(true)
-      // user_doc = getDoc(db, userID)
-      // if user_doc is none:
-      //    createUserDoc()
-      createUserDoc()
+      checkIfExists()
       navigate("/")
     });
   };
