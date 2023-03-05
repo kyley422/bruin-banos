@@ -61,6 +61,35 @@
     }
   }
 
+
+  .poops {
+    // for array:
+    // position: absolute;
+    // margin-right: 20px;
+    // // object-fit: fill;
+    // margin-left: -135px;
+    // // top: 16.5px;
+    // // margin: auto;
+    // margin-top: -3px;
+    // gap: 10%;
+
+    position: absolute;
+    margin-right: 20px;
+    // // object-fit: fill;
+    margin-left: -135px;
+    // // top: 16.5px;
+    // // margin: auto;
+    margin-top: -3px;
+
+    img {
+      // width: 30%;
+      max-width: 35%;
+      height: auto;
+      
+
+    }
+  }
+
   .overall-review-container {
     // border-style: solid;
     // border-color: red;
@@ -73,10 +102,15 @@
 
     font-size: 14px;
 
+
+
     .overall-ratings {
-      margin-left: 20px;
+      margin-left: 150px;
     }
   }
+
+
+
 
   .heart {
     // border-style: solid;

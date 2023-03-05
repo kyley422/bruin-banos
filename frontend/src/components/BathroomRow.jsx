@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import './BathroomRow.scss'
+// import Poops from './Poops.jsx'
+
 
 export default class BathroomRow extends Component {
   render() {
@@ -18,14 +20,35 @@ export default class BathroomRow extends Component {
         </div>
         <div className='overall-review-container'>
             <div className='poops'>
-                [Poops Placeholder: {this.props.score_overall}]
+                {/* {[...Array(5)].map((poops, i) => {
+                    // const ratingValue = i + 1;
+                    return (
+                        
+                        <img src='https://i.imgur.com/zeUE5V4.png' alt='Golden Poop' />
+                    )
+                })}  */}
+                {
+                    {
+                        0: <img src='https://i.imgur.com/vljxALF.png' alt='Poop Review 0' />,
+                        0.5: <img src='https://i.imgur.com/gT1BW3c.png' alt='Poop Review 0.5' />,
+                        1: <img src='https://i.imgur.com/3uoFK5M.png' alt='Poop Review 1' />,
+                        1.5: <img src='https://i.imgur.com/HjLehVI.png' alt='Poop Review 1.5' />,
+                        2: <img src='https://i.imgur.com/oSmZjJi.png' alt='Poop Review 2' />,
+                        2.5: <img src='https://i.imgur.com/TpvY5ax.png' alt='Poop Review 2.5' />,
+                        3: <img src='https://i.imgur.com/XkkAJpw.png' alt='Poop Review 3' />,
+                        3.5: <img src='https://i.imgur.com/JuTxea7.png' alt='Poop Review 3.5' />,
+                        4: <img src='https://i.imgur.com/sBwRpE4.png' alt='Poop Review 4' />,
+                        4.5: <img src='https://i.imgur.com/rzTx5vY.png' alt='Poop Review 4.5' />,
+                        5: <img src='https://i.imgur.com/asIJDlm.png' alt='Poop Review 5' />
+                    }[Math.round(3.7 * 2) / 2]
+                }
             </div>
             <div className='overall-ratings'>
                 OVERALL ({this.props.total_ratings})
             </div>
         </div>
         <div className='heart'>
-            <img src='https://i.imgur.com/qmmXb0N.png' alt='Male' />
+            <img src='https://i.imgur.com/tqq4Q6I.png' alt='Heart' />
         </div>
         <div className='ratings'>
             CLEANLINESS  <b>{this.props.score_cleanliness}</b> | COMFORT <b>{this.props.score_comfort}</b> | CONVENIENCE <b>{this.props.score_convenience}</b> | AMENITIES <b>{this.props.score_amenities}</b>

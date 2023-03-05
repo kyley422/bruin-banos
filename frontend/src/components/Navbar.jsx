@@ -9,10 +9,21 @@ export default class Navbar extends Component {
   render() {
     return (
         <nav>
-            <Link to="/"> Home </Link>
-            {!this.props.isAuth ? <Link to="/login"> Login </Link> : <button onClick={this.props.logOut}> Log Out </button>}
-            <SearchBar />
+            <Link to="/" class="logo" >
+              <img src='https://i.imgur.com/vR0CIB2.png' alt='Bruin Baños Logo'/>
+            </Link>
+
+            <Link to="/" class="home"> 
+              Bruin Baños 
+            </Link>
+
+            <SearchBar/>
+
             <Link to={this.props.isAuth ? "/review" : "/login"}> <Button /> </Link>
+
+            {!this.props.isAuth ? <Link to="/login"> 
+              <img src='https://i.imgur.com/YcXGNzZ.png' alt='profile' class="profile"/>
+            </Link> : <button onClick={this.props.logOut}> Log Out </button>}
         </nav>
     )
   }
