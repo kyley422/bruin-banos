@@ -8,25 +8,18 @@ export default class BathroomRow extends Component {
     return (
       <div className='bathroom-row'>
         <div className='image-container'>
-            <img src='https://i.imgur.com/Idl80gB.jpg' alt='Marion Anderson Hall' />
+            <img src={this.props.image} alt='Building' />
         </div>
         <div className='title-container'>
             <div className='title'>
-                Anderson 1224
+                {this.props.name}
             </div>
             <div className='gender'>
-                <img src='https://i.imgur.com/xmE2DNn.png' alt='Male' />
+                <img src={this.props.genderImageURL} alt='Gender' />
             </div>
         </div>
         <div className='overall-review-container'>
             <div className='poops'>
-                {/* {[...Array(5)].map((poops, i) => {
-                    // const ratingValue = i + 1;
-                    return (
-                        
-                        <img src='https://i.imgur.com/zeUE5V4.png' alt='Golden Poop' />
-                    )
-                })}  */}
                 {
                     {
                         0: <img src='https://i.imgur.com/vljxALF.png' alt='Poop Review 0' />,
@@ -40,18 +33,18 @@ export default class BathroomRow extends Component {
                         4: <img src='https://i.imgur.com/sBwRpE4.png' alt='Poop Review 4' />,
                         4.5: <img src='https://i.imgur.com/rzTx5vY.png' alt='Poop Review 4.5' />,
                         5: <img src='https://i.imgur.com/asIJDlm.png' alt='Poop Review 5' />
-                    }[Math.round(3.7 * 2) / 2]
+                    }[Math.round(this.props.score_overall * 2) / 2]
                 }
             </div>
             <div className='overall-ratings'>
-                OVERALL (431 reviews)
+                {this.props.total_ratings}
             </div>
         </div>
         <div className='heart'>
             <img src='https://i.imgur.com/tqq4Q6I.png' alt='Heart' />
         </div>
         <div className='ratings'>
-            CLEANLINESS  5 | COMFORT 5 | CONVENIENCE 4.5 | AMENITIES 5
+            CLEANLINESS  <b>{this.props.score_cleanliness}</b> | COMFORT <b>{this.props.score_comfort}</b> | CONVENIENCE <b>{this.props.score_convenience}</b> | AMENITIES <b>{this.props.score_amenities}</b>
         </div>
         <div className='top-review'>
             <div className='top-review-bubble'>
@@ -60,9 +53,7 @@ export default class BathroomRow extends Component {
             <p className='top-review-splash'>TOP REVIEW</p>
         </div>
         <div className='top-review-container'>
-            <p className='top-review-content'>
-            “This bathroom was clean and well-maintained, with plenty of soap and paper towels available. The stalls were spacious and private, and the...” <b>Read More &gt;</b>
-            </p>
+            {this.props.top_review}
         </div>
       </div>
     )

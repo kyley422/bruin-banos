@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Home.scss'
 
-import BathroomRow from '../../components/BathroomRow'
+import BathroomListings from '../../components/BathroomListings'
 
 const Hero = () => {
   return (
@@ -23,9 +23,7 @@ const ListingContainer = () => {
       <div className='filter-container'>
         Filters
       </div>
-      <div className='bathroom-listings'>
-        <BathroomRow className='bathroom-row'/>
-      </div>
+    <BathroomListings />
     </div>
   )
 }

@@ -3,6 +3,8 @@
   // border-color: green;
   border-radius: 15px;
 
+  margin-top: 15px;
+
   background-color: #fcfcfc;
 
   display: flex;
@@ -60,33 +62,6 @@
   }
 
 
-  .poops {
-    // for array:
-    // position: absolute;
-    // margin-right: 20px;
-    // // object-fit: fill;
-    // margin-left: -135px;
-    // // top: 16.5px;
-    // // margin: auto;
-    // margin-top: -3px;
-    // gap: 10%;
-
-    position: absolute;
-    margin-right: 20px;
-    // // object-fit: fill;
-    margin-left: -135px;
-    // // top: 16.5px;
-    // // margin: auto;
-    margin-top: -3px;
-
-    img {
-      // width: 30%;
-      max-width: 35%;
-      height: auto;
-      
-
-    }
-  }
 
   .overall-review-container {
     // border-style: solid;
@@ -100,10 +75,22 @@
 
     font-size: 14px;
 
-
-
+    .poops {
+      // border-style: solid;
+      // border-color: blue;
+  
+      position: relative;
+      width: 100px;
+      img {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    }
     .overall-ratings {
-      margin-left: 150px;
+      margin-top: 2px;
+      margin-left: 15px;
+      color: #9D9D9D;
     }
   }
 
@@ -170,10 +157,13 @@
     // border-color: red;
     position: absolute;
     margin-left: 172px;
-    margin-top: 110px;
+    margin-top: 120px;
+    height: 50px;
     width: 500px;
-    p {
-        font-size: 14px;
-    }
+
+    text-align: left;
+    font-size: 14px;
+
+    overflow: hidden;
   }
 }
