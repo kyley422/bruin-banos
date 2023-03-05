@@ -47,6 +47,8 @@ function BathroomListings() {
             })
         }
         mapReviews()
+        let tempTopReviewTexts = topReviewTexts.slice()
+        setTopReviewTexts(tempTopReviewTexts)
     },[bathroomList])
 
     return <div className='bathroom-listings'>
