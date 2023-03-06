@@ -34,11 +34,17 @@ function BathroomListings() {
 
     useEffect(() => {
         const getTopReviews = async (ref) => {
-            const topReviewRef = doc(db, "reviews", ref)
-            const topReview = await getDoc(topReviewRef)
-            topReviewTexts.push(topReview.data().reviewText)
-            setTopReviewTexts(topReviewTexts)
-            console.log(topReviewTexts)
+            try {
+                const topReviewRef = doc(db, "reviews", ref)
+                const topReview = await getDoc(topReviewRef)
+                topReviewTexts.push(topReview.data().reviewText)
+                setTopReviewTexts(topReviewTexts)
+                // console.log(topReviewTexts)
+            }
+            catch {
+                topReviewTexts.push("None yet. Be the first to write a review!")
+                setTopReviewTexts(topReviewTexts)
+            }
         }
         function mapReviews() {
             bathroomList.map((entry) => {
@@ -49,6 +55,7 @@ function BathroomListings() {
         mapReviews()
         let tempTopReviewTexts = topReviewTexts.slice()
         setTopReviewTexts(tempTopReviewTexts)
+        console.log(topReviewTexts)
     },[bathroomList])
 
     return <div className='bathroom-listings'>
@@ -63,7 +70,7 @@ function BathroomListings() {
             score_comfort={entry.score_comfort}
             score_convenience={entry.score_convenience}
             score_amenities={entry.score_amenities}
-            top_review={"\"" + topReviewTexts[index] + "\""}
+            top_review={topReviewTexts[index]}
         />
         return current_bathroom_row
     })}
