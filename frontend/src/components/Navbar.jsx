@@ -26,6 +26,7 @@ export default class Navbar extends Component {
               <img src='https://i.imgur.com/YcXGNzZ.png' alt='blankUser' class="profile"/>
             </Link> : <Link to="/user"> 
               <img src={localStorage.getItem("profilePic")} alt='profilePic' class="user"/>
+              {/* </Link> : <button onClick={this.props.logOut}> Log Out </button>} TODO: LOGOUT BUTTON*/}
             </Link>}
         </nav>
     )
