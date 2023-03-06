@@ -49,18 +49,18 @@
         // border-style: solid;
         // border-color: red;
         margin-top: 15px;
-
+        padding-top: 20px;
         border-radius: 15px;
 
-        height: 567px;
+        height: 450px;
         width: 30%;      
 
         background-color: #fcfcfc;
 
         text-align: center;
         .filter-component {
-            border-style: solid;
-            border-color: red;
+            // border-style: solid;
+            // border-color: red;
             margin-left: 30px;
             margin-right: 30px;
             margin-top: 10px;
@@ -112,7 +112,19 @@
                 width: 82%;
             }
             .selectValue {
-                
+                // border-style: solid;
+                // border-color: green;
+                display: table;
+                width: 100%;
+                table-layout: fixed;
+                margin-top: -12px;
+                .selectValueNumber {
+                    // border-style: solid;
+                    // border-color: green;
+                    display: table-cell;
+                    text-align: center;
+                    color: #6D6D6D;
+                }
             }
         }
     }

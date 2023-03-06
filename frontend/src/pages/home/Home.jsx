@@ -60,8 +60,15 @@ const ListingContainer = () => {
           <div className="filter-title">Range</div>
           <div className="slider">
             <label>
-              <input type="range" min="0" max="5" defaultValue="3" id="slider"/>
+              <input type="range" min="1" max="5" defaultValue="3" id="slider"/>
             </label>
+              <div className="selectValue">
+                <div className="selectValueNumber">1</div>
+                <div className="selectValueNumber">2</div>
+                <div className="selectValueNumber">3</div>
+                <div className="selectValueNumber">4</div>
+                <div className="selectValueNumber">5</div>
+              </div>
           </div>
         </div>
       </div>
