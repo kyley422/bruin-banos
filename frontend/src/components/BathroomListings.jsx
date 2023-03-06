@@ -63,7 +63,7 @@ function BathroomListings() {
             score_comfort={entry.score_comfort}
             score_convenience={entry.score_convenience}
             score_amenities={entry.score_amenities}
-            top_review={"\"" + topReviewTexts[index]}
+            top_review={"\"" + topReviewTexts[index] + "\""}
         />
         return current_bathroom_row
     })}
