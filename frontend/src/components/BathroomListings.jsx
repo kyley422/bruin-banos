@@ -81,6 +81,10 @@ function BathroomListings(props) {
         console.log(topReviewTexts)
     },[bathroomList])
 
+    if (bathroomList.length === 0) {
+        return <div className='bathroom-listings-not-found'>No results found. Try expanding your search.</div>
+    }
+
     return <div className='bathroom-listings'>
     {bathroomList.map((entry, index) => {
         let current_bathroom_row = <BathroomRow className='bathroom-entry' key={entry.name} 
