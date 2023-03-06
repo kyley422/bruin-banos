@@ -13,6 +13,7 @@ import Login from "./pages/login/Login";
 import Review from "./pages/review/Review";
 import Invalid from "./pages/invalid/Invalid";
 import Navbar from "./components/Navbar";
+import User from "./pages/user/User"
 
 function App() {
   
@@ -37,6 +38,7 @@ function App() {
           <Route path="/bathroom/:bathroomId" element={<BathroomPage />} />
           <Route path="/login" element={<Login setIsAuth={setIsAuth}/>} />
           <Route path="/review" element={<Review isAuth={isAuth}/>} />
+          <Route path="/user" element={<User isAuth={isAuth}/>} />
           <Route path="/invalid" element={<Invalid />} />
         </Routes>
       </Router>
