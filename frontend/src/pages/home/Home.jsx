@@ -12,10 +12,10 @@ const Hero = () => {
       <div className="text-container">
         <h1 className="hero-text">Bruin Baños</h1>
         <p className="hero-content">
-          Welcome to the ultimate resource for finding the best public bathrooms
-          at UCLA! With detailed information on facilities, amenities, and user
-          ratings, you can make informed decisions about where to go. So why
-          wait? Start exploring and find the perfect bathroom for your needs
+          Welcome to the ultimate resource for finding the best public bathrooms<br></br>
+          at UCLA! With detailed information on facilities, amenities, and user<br></br>
+          ratings, you can make informed decisions about where to go. So why<br></br>
+          wait? Start exploring and find the perfect bathroom for your needs<br></br>
           today!
         </p>
       </div>
