@@ -27,10 +27,17 @@ const Hero = () => {
 const ListingContainer = () => {
 
   const [maleIsChecked, setMaleIsChecked] = useState(true);
-
-  const handleOnChange = () => {
+  const [femaleIsChecked, setFemaleIsChecked] = useState(true);
+  const [neutralIsChecked, setNeutralIsChecked] = useState(true);
+  
+  const maleHandleOnChange = () => {
     setMaleIsChecked(!maleIsChecked)
-    console.log("Male Toggled")
+  };
+  const femaleHandleOnChange = () => {
+    setFemaleIsChecked(!femaleIsChecked)
+  };
+  const neutralHandleOnChange = () => {
+    setNeutralIsChecked(!neutralIsChecked)
   };
 
   return (
@@ -40,15 +47,15 @@ const ListingContainer = () => {
           <div className="filter-title">Filter</div>
           <div className="gender-list">
             <div className="checkbox-component">
-              <input type="checkbox" checked={maleIsChecked} onChange={handleOnChange}/>
+              <input type="checkbox" checked={maleIsChecked} onChange={maleHandleOnChange}/>
               <label for="vehicle1">Male</label>
             </div>
             <div className="checkbox-component">
-              <input type="checkbox" />
+              <input type="checkbox" checked={femaleIsChecked} onChange={femaleHandleOnChange}/>
               <label for="vehicle2">Female</label>
             </div>
             <div className="checkbox-component">
-              <input type="checkbox" />
+              <input type="checkbox" checked={neutralIsChecked} onChange={neutralHandleOnChange}/>
               <label for="vehicle3">All Gender</label>
             </div>
           </div>
@@ -81,7 +88,7 @@ const ListingContainer = () => {
           </div>
         </div>
       </div>
-      <BathroomListings male={maleIsChecked ? true : false} />
+      <BathroomListings male={maleIsChecked} female={femaleIsChecked} neutral={neutralIsChecked}/>
     </div>
   );
 };

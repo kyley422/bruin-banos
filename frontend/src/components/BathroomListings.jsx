@@ -31,7 +31,8 @@ function BathroomListings(props) {
             const bathroomCollectionRef = collection(db,"bathroom")
             const q = query(
                 bathroomCollectionRef, 
-                where("gender", 'in', [props.male ? 'male' : null, 'female', 'neutral'])
+                where("gender", 'in', [props.male ? 'male' : null, 
+                    props.female ? 'female' : null, props.neutral ? 'neutral' : null])
                 );
             const data = await getDocs(q);
             // const data = await getDocs(bathroomCollectionRef)
