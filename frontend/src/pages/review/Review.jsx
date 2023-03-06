@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, getDocs, collection, getDoc, setDoc, doc, arrayUnion, query, where } from 'firebase/firestore'
 import { db, auth } from '../../firebase-config';
 import { useNavigate } from 'react-router-dom';
 
@@ -14,11 +14,12 @@ function Review( {isAuth} ) {
 
   // "reviews" is name of collection in Firebase
   const reviewsCollectionRef = collection(db, "reviews");
+  const bathroomCollectionRef = collection(db, "bathroom");
   let navigate = useNavigate();
 
   // auth.currentUser.displayName and uid are google account information we can use
   const createReview = async () => {
-    await addDoc(reviewsCollectionRef, {
+    let newReview = await addDoc(reviewsCollectionRef, {
       bathroom: bathroom, 
       overall: overall,
       cleanliness: cleanliness,
@@ -28,6 +29,16 @@ function Review( {isAuth} ) {
       reviewText: reviewText, 
       author: {name: auth.currentUser.displayName, id: auth.currentUser.uid}
     });
+    const q = query(bathroomCollectionRef, where('name', '==', bathroom))
+    const snapshot = await getDocs(q)
+
+    if (snapshot.empty) {
+      console.log("Bathroom NOT Found")
+    }
+    else {
+      const targetBathroom = doc(db, "bathroom", snapshot.docs[0].id)
+      setDoc(targetBathroom, {reviews: arrayUnion(newReview.id)}, {merge: true})
+    }
     navigate("/");
   };
 
