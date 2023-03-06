@@ -1,0 +1,41 @@
+.user-page {
+    .welcome h1 {
+        margin-top: 85px;
+        padding-left: 22%;
+        color: #2774AE;
+        width: 100%;
+        height: auto;
+        font-size: 250%;
+        // float: left;
+        position: relative;
+        
+        // text-align: center;
+        // margin-right: 2000px;
+        }
+    .favorites {    
+        margin-top: 60px;
+        padding-left: 22%;
+        .listing-container {
+            .favorites-list {
+                // float: left;
+                display: flex;
+            }
+            .filter-container {
+                // float: right;
+            }
+        }
+    }
+    
+    // .listing-container {
+    //     .filter-container {
+    //         border-radius: 1px;
+    //         border-style: solid;
+    //         border-width: 1px;
+    //         border-color: red;
+    //     }
+
+    //     .filter-container {
+    //         // border-color: red;
+    //     }
+    // }
+}

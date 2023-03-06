@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './Navbar.scss'
+// import { signInWithGoogle } from '../pages/login/Login'
 
 import SearchBar from './SearchBar'
 import Button from './Button'
@@ -22,8 +23,11 @@ export default class Navbar extends Component {
             <Link to={this.props.isAuth ? "/review" : "/login"}> <Button /> </Link>
 
             {!this.props.isAuth ? <Link to="/login"> 
-              <img src='https://i.imgur.com/YcXGNzZ.png' alt='profile' class="profile"/>
-            </Link> : <button onClick={this.props.logOut}> Log Out </button>}
+              <img src='https://i.imgur.com/YcXGNzZ.png' alt='blankUser' class="profile"/>
+            </Link> : <Link to="/user"> 
+              <img src={localStorage.getItem("profilePic")} alt='profilePic' class="user"/>
+              {/* </Link> : <button onClick={this.props.logOut}> Log Out </button>} TODO: LOGOUT BUTTON*/}
+            </Link>}
         </nav>
     )
   }
