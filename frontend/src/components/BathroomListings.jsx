@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import {doc, getDoc, get, getDocs, collection} from 'firebase/firestore' 
 import { db } from '../firebase-config';
+import { query, where } from "firebase/firestore";
 
 import BathroomRow from '../components/BathroomRow'
 
@@ -17,7 +18,7 @@ function getGenderIconURL(gender) {
 }
 
 
-function BathroomListings() {
+function BathroomListings(props) {
     const [bathroomList, setBathroomList] = useState([])
     const bathroomCollectionRef = collection(db,"bathroom")
     const [topReviewTexts, setTopReviewTexts] = useState([])
@@ -26,7 +27,13 @@ function BathroomListings() {
 
     useEffect(() => {
         const getPosts = async () => {
-            const data = await getDocs(bathroomCollectionRef)
+            // Start with just displaying male bathrooms
+            const q = query(
+                bathroomCollectionRef,
+                where("gender", "==", props.gender)
+            );
+            const data = await getDocs(q);
+            // const data = await getDocs(bathroomCollectionRef)
             setBathroomList(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
         }
         getPosts()
