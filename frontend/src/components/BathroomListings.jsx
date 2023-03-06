@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import {doc, getDoc, get, getDocs, collection} from 'firebase/firestore' 
 import { db } from '../firebase-config';
+import { query, where, orderBy } from "firebase/firestore";
 
 import BathroomRow from '../components/BathroomRow'
 
@@ -16,21 +17,43 @@ function getGenderIconURL(gender) {
     }
 }
 
+function getSortParam(param) {
+    switch(param) {
+        case "Overall":
+            return "score_overall"
+        case "Cleanliness":
+            return "score_cleanliness"
+        case "Comfort": 
+            return "score_comfort"
+        case "Convenience":
+            return "score_convenience"
+        case "Amenities":
+            return "score_amenities"
+    }
+}
 
-function BathroomListings() {
+function BathroomListings(props) {
     const [bathroomList, setBathroomList] = useState([])
-    const bathroomCollectionRef = collection(db,"bathroom")
+
     const [topReviewTexts, setTopReviewTexts] = useState([])
 
     const firstUpdate = useRef(true)
 
     useEffect(() => {
         const getPosts = async () => {
-            const data = await getDocs(bathroomCollectionRef)
+            // Start with just displaying male bathrooms
+            const bathroomCollectionRef = collection(db,"bathroom")
+            const q = query(
+                bathroomCollectionRef, 
+                where("gender", 'in', [props.male ? 'male' : null, props.female ? 'female' : null, props.neutral ? 'neutral' : null]),
+                orderBy(getSortParam(props.sortParam), "desc")
+                );
+            const data = await getDocs(q);
+            // const data = await getDocs(bathroomCollectionRef)
             setBathroomList(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
         }
         getPosts()
-    },[db])
+    },[db, props])
 
     useEffect(() => {
         const getTopReviews = async (ref) => {
