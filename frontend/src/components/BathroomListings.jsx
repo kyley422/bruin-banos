@@ -20,7 +20,7 @@ function getGenderIconURL(gender) {
 
 function BathroomListings(props) {
     const [bathroomList, setBathroomList] = useState([])
-    const bathroomCollectionRef = collection(db,"bathroom")
+
     const [topReviewTexts, setTopReviewTexts] = useState([])
 
     const firstUpdate = useRef(true)
@@ -28,16 +28,17 @@ function BathroomListings(props) {
     useEffect(() => {
         const getPosts = async () => {
             // Start with just displaying male bathrooms
+            const bathroomCollectionRef = collection(db,"bathroom")
             const q = query(
-                bathroomCollectionRef,
-                where("gender", "==", props.gender)
-            );
+                bathroomCollectionRef, 
+                where("gender", 'in', [props.male ? 'male' : null, 'female', 'neutral'])
+                );
             const data = await getDocs(q);
             // const data = await getDocs(bathroomCollectionRef)
             setBathroomList(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
         }
         getPosts()
-    },[db])
+    },[db, props])
 
     useEffect(() => {
         const getTopReviews = async (ref) => {

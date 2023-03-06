@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { useState } from "react";
 import "./Home.scss";
 
 import BathroomListings from "../../components/BathroomListings";
@@ -24,6 +25,14 @@ const Hero = () => {
 };
 
 const ListingContainer = () => {
+
+  const [maleIsChecked, setMaleIsChecked] = useState(true);
+
+  const handleOnChange = () => {
+    setMaleIsChecked(!maleIsChecked)
+    console.log("Male Toggled")
+  };
+
   return (
     <div className="listing-container">
       <div className="filter-container">
@@ -31,7 +40,7 @@ const ListingContainer = () => {
           <div className="filter-title">Filter</div>
           <div className="gender-list">
             <div className="checkbox-component">
-              <input type="checkbox" />
+              <input type="checkbox" checked={maleIsChecked} onChange={handleOnChange}/>
               <label for="vehicle1">Male</label>
             </div>
             <div className="checkbox-component">
@@ -72,7 +81,7 @@ const ListingContainer = () => {
           </div>
         </div>
       </div>
-      <BathroomListings />
+      <BathroomListings male={maleIsChecked ? true : false} />
     </div>
   );
 };
