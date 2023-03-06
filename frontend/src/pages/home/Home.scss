@@ -52,16 +52,87 @@ body {
     .filter-container {
         // border-style: solid;
         // border-color: red;
+        position: sticky;
+        top: 75px;
         margin-top: 15px;
-
+        padding-top: 20px;
         border-radius: 15px;
 
-        height: 567px;
+        height: 450px;
         width: 30%;      
 
         background-color: #fcfcfc;
 
         text-align: center;
+        .filter-component {
+            // border-style: solid;
+            // border-color: red;
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 10px;
+        }
+        .filter-title {
+            // border-style: solid;
+            // border-color: blue;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-weight: bold;
+            text-align: left;
+            padding-left: 10px;
+            font-size: 18px;
+        }
+        .gender-list {
+            // border-style: solid;
+            // border-color: green;
+            height: 150px;
+            .checkbox-component {
+                // border-style: solid;
+                // border-color: green;
+                display: flex;
+                margin-bottom: 10px;
+                input {
+                    width: 20px;
+                    margin-left: 20px;
+                }
+                label {
+                    // border-style: solid;
+                    // border-color: green;
+                    display: block;
+                    text-align: left;
+                    margin-top: 10px;
+                    margin-left: -15px;
+                }
+            }
+        }
+        .dropdown {
+            height: 25px;
+            width: 94%;
+            border-radius: 8px;
+            color: #6D6D6D;
+            margin-bottom: 20px;
+        }
+        .slider {
+            input {
+                padding: 0px;
+                margin: auto;
+                width: 82%;
+            }
+            .selectValue {
+                // border-style: solid;
+                // border-color: green;
+                display: table;
+                width: 100%;
+                table-layout: fixed;
+                margin-top: -12px;
+                .selectValueNumber {
+                    // border-style: solid;
+                    // border-color: green;
+                    display: table-cell;
+                    text-align: center;
+                    color: #6D6D6D;
+                }
+            }
+        }
     }
     .bathroom-listings {
         // border-style: solid;
