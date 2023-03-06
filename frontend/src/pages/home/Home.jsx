@@ -29,6 +29,7 @@ const ListingContainer = () => {
   const [maleIsChecked, setMaleIsChecked] = useState(true);
   const [femaleIsChecked, setFemaleIsChecked] = useState(true);
   const [neutralIsChecked, setNeutralIsChecked] = useState(true);
+  const [sortParam, setSortParam] = useState("Overall");
   
   const maleHandleOnChange = () => {
     setMaleIsChecked(!maleIsChecked)
@@ -63,7 +64,7 @@ const ListingContainer = () => {
         <div className="filter-component">
           <div className="filter-title">Sort Rating</div>
           <div className="dropdown-container">
-            <select className="dropdown">
+            <select className="dropdown" onChange={(e) => setSortParam(e.target.value)}>
               <option value="Overall">Overall</option>
               <option value="Cleanliness">Cleanliness</option>
               <option value="Comfort">Comfort</option>
@@ -88,7 +89,8 @@ const ListingContainer = () => {
           </div>
         </div>
       </div>
-      <BathroomListings male={maleIsChecked} female={femaleIsChecked} neutral={neutralIsChecked}/>
+      <BathroomListings male={maleIsChecked} female={femaleIsChecked} 
+        neutral={neutralIsChecked} sortParam={sortParam}/>
     </div>
   );
 };
