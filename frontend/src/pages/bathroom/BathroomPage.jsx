@@ -1,4 +1,4 @@
-import { getDoc } from 'firebase/firestore';
+import { getDoc, getDocs, collection } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 import { db } from '../../firebase-config';
 import { doc } from 'firebase/firestore';
@@ -22,7 +22,9 @@ function getGenderIconURL(gender) {
 
 function BathroomPage() {
     const [isLoading, setIsLoading] = useState(true);
+    const [isLoading2, setIsLoading2] = useState(true);
     const [bathroomData, setBathroomData] = useState(null);
+    const [reviewData, setReviewData] = useState([])
     const params = useParams()
     const bathroomId = params.bathroomId
     const docRef = doc(db, "bathroom", bathroomId)
@@ -41,17 +43,39 @@ function BathroomPage() {
             setIsLoading(false);
             setBathroomData(data.data())
         };
-        
+
         getData();
     },[db])
 
-  return (
-    // idk how to center things in the screen so to see the 
-    // text i added the 5 filler lines below 
-    // (fixed by hao)
-    <div>
+    useEffect(() => {
+      const getReviews = async () => {
+        if(!isLoading) {
+          const newData = [];
 
-      {!isLoading && (
+          bathroomData.reviews.forEach(async id => {
+            const reviewRef = doc(db, "reviews", id);
+            const reviewSnap = await getDoc(reviewRef);
+
+            if (reviewSnap.exists()) {
+              newData.push(reviewSnap.data());
+              // console.log("PUSHING")
+              // console.log(reviewSnap.data())
+            }
+          });
+
+          setReviewData(newData);
+          // console.log("GOT REVIEWS");
+          // console.log(reviewData)
+          setIsLoading2(false)
+        }
+      };
+      getReviews();
+
+    },[bathroomData, isLoading])
+
+  return (
+    <div>
+      {!isLoading && !isLoading2 && (
         <>
             <div className='buildingimage'>
               <div><img className="banner" src={bathroomData.image}/></div>
@@ -67,16 +91,17 @@ function BathroomPage() {
               <p className='convenience'>Convience                    <strong>{bathroomData.score_convenience}</strong></p>
               <p className='ameneties'>Ameneties                    <strong>{bathroomData.score_amenities}</strong></p>
             </div>
-
-            <div className='overall'>Total Ratings: {bathroomData.total_ratings}</div>
+            <div className='overall'>
+              Total Ratings: {bathroomData.total_ratings}
+              {console.log(reviewData)}
+            </div>
         </>
       )}
-
     </div>
-
   );
 
   // Have React display some information using Bathroom ID
+  
   // Have React show invalid error if cant find Bathroom ID
 }
 
