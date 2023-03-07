@@ -93,7 +93,15 @@ function BathroomPage() {
             </div>
             <div className='overall'>
               Total Ratings: {bathroomData.total_ratings}
+            </div>
+            {/* In theory, the div below should show all the names but im doing something wrong :( */}
+            <div>
               {console.log(reviewData)}
+              {reviewData.map((item) => (
+                <div key={item.id}>
+                  {item.amenities}
+                </div>
+              ))}
             </div>
         </>
       )}
