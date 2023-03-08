@@ -1,40 +1,11 @@
 import React, { Component } from 'react'
 import './BathroomRow.scss'
-import { addDoc, getDocs, collection, getFirestore } from 'firebase/firestore'
+import { getDocs, updateDoc, collection, arrayRemove, setDoc, doc, arrayUnion, query, where } from 'firebase/firestore'
 import { db, auth } from '../firebase-config';
 import { Link } from 'react-router-dom'
 
-// import { useNavigate } from 'react-router-dom';
 
-// function favorite( {isAuth}) {
-// const favCollectionRef = collection(db, "LikedReviews");
-// let navigate = useNavigate();
-
-// saveToFirebase = FireBase.firestore(),
-// saveToFirebase.collection("todos").add({
-//   id: uuid(),
-//   item: input
-// });
-console.log(auth)
-// var user_path = "users/" + auth.currentUser.uid + "/likedReviews";
-// console.log(user_path)
-const userRef = collection(db, "users")
-console.log(userRef)
-
-
-
-// getDocs(colRef)
-//     .then((snapshot) => {
-//         console.log(snapshot.docs)
-//     })
-// console.log()
-
-// await addDoc(usersCollectionRef, {
-//     id: auth.currentUser.uid,
-//     name: auth.currentUser.displayName,
-//     reviews: reviews,
-//     likedReviews: likedReviews,
-//   });
+const userRef = collection(db, "users");
 
 
 const unfilledHeart = "https://i.imgur.com/tqq4Q6I.png"
@@ -43,8 +14,22 @@ const filledHeart = "https://i.imgur.com/qmmXb0N.png"
 
 export default class BathroomRow extends Component {
   render() {
+
+    const addLikedBathroom = async () => {
+        const q = query(userRef, where('id', '==', auth.currentUser.uid))
+        const snapshot = await getDocs(q)
+        const targetUser = doc(db, "users", snapshot.docs[0].id)
+        setDoc(targetUser, {likedBathrooms: arrayUnion(this.props.name)}, {merge: true})
+    };
+    
+    const RemoveLikedBathroom = async () => { 
+        const q = query(userRef, where('id', '==', auth.currentUser.uid))
+        const snapshot = await getDocs(q)
+        const targetBathroom = doc(db, "users", snapshot.docs[0].id)
+        await updateDoc(targetBathroom, {likedBathrooms: arrayRemove(this.props.name)})
+    }
+
     var favorited = false;
-    var something = this.props.review_id
     function myfunction() {
         if (!localStorage.getItem("isAuth")) { 
             <link to ="/login"></link>
@@ -54,22 +39,17 @@ export default class BathroomRow extends Component {
             if(!favorited) { 
                 favorited = true
                 displayImage.src = filledHeart
-                
-                // add firebase stuff here for adding to database:
-                // console.log(something)
-                // addDoc(userRef, {likedReviews: something});
-                console.log("made it past the firestore")
+                addLikedBathroom()
             }
             else {
                 favorited = false
                 displayImage.src = unfilledHeart
-                // add firebase stuff here for removing from database:
+                RemoveLikedBathroom()
             }
-            console.log("CLICKED");
         }
     }
 
-    const button_id = "button-" + this.props.review_id
+    const button_id = "button-" + this.props.name
 
     const handleMouseOver = (event) => {
         if (favorited == false) {
