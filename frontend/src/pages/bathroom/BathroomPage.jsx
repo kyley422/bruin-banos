@@ -58,6 +58,7 @@ function BathroomPage() {
 
             if (reviewSnap.exists()) {
               newData.push(reviewSnap.data());
+              setReviewData(newData);
               // console.log("PUSHING")
               // console.log(reviewSnap.data())
             }
@@ -70,7 +71,8 @@ function BathroomPage() {
         }
       };
       getReviews();
-
+      let tempReviewData = reviewData.slice()
+      setReviewData(tempReviewData)
     },[bathroomData, isLoading])
 
   return (
@@ -97,11 +99,17 @@ function BathroomPage() {
             {/* In theory, the div below should show all the names but im doing something wrong :( */}
             <div>
               {console.log(reviewData)}
-              {reviewData.map((item) => (
-                <div key={item.id}>
-                  {item.amenities}
+              {reviewData.map((item, index) => {
+                return <div key={index}>
+                  {item.author.name}:
+                  {item.overall},
+                  {item.cleanliness},
+                  {item.comfort},
+                  {item.convenience},
+                  {item.amenities},
+                  {item.reviewText}
                 </div>
-              ))}
+              })}
             </div>
         </>
       )}
