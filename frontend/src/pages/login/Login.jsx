@@ -17,14 +17,14 @@ function Login({ setIsAuth }) {
   const usersCollectionRef = collection(db, "users");
 
   var reviews = [];
-  var likedReviews = [];
+  var likedBathrooms = [];
 
   const createUserDoc = async () => {
     await addDoc(usersCollectionRef, {
       id: auth.currentUser.uid,
       name: auth.currentUser.displayName,
       reviews: reviews,
-      likedReviews: likedReviews,
+      likedBathrooms: likedBathrooms,
     });
     navigate("/");
   };

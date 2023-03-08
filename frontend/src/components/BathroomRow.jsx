@@ -1,10 +1,69 @@
 import React, { Component } from 'react'
 import './BathroomRow.scss'
-// import Poops from './Poops.jsx'
+import { getDocs, updateDoc, collection, arrayRemove, setDoc, doc, arrayUnion, query, where } from 'firebase/firestore'
+import { db, auth } from '../firebase-config';
+import { Link } from 'react-router-dom'
+
+
+const userRef = collection(db, "users");
+
+
+const unfilledHeart = "https://i.imgur.com/tqq4Q6I.png"
+const filledHeart = "https://i.imgur.com/qmmXb0N.png"
 
 
 export default class BathroomRow extends Component {
   render() {
+
+    const addLikedBathroom = async () => {
+        const q = query(userRef, where('id', '==', auth.currentUser.uid))
+        const snapshot = await getDocs(q)
+        const targetUser = doc(db, "users", snapshot.docs[0].id)
+        setDoc(targetUser, {likedBathrooms: arrayUnion(this.props.name)}, {merge: true})
+    };
+    
+    const RemoveLikedBathroom = async () => { 
+        const q = query(userRef, where('id', '==', auth.currentUser.uid))
+        const snapshot = await getDocs(q)
+        const targetBathroom = doc(db, "users", snapshot.docs[0].id)
+        await updateDoc(targetBathroom, {likedBathrooms: arrayRemove(this.props.name)})
+    }
+
+    var favorited = false;
+    function whenClicked() {
+        if (!localStorage.getItem("isAuth")) { 
+            <link to ="/login"></link>
+        }
+        else {
+            let displayImage = document.getElementById(button_id)
+            if(!favorited) { 
+                favorited = true
+                displayImage.src = filledHeart
+                addLikedBathroom()
+            }
+            else {
+                favorited = false
+                displayImage.src = unfilledHeart
+                RemoveLikedBathroom()
+            }
+        }
+    }
+
+    const button_id = "button-" + this.props.name
+
+    const handleMouseOver = (event) => {
+        if (favorited == false) {
+            event.target.src=filledHeart
+        }        
+
+    }
+    const handleMouseOut = (event) => {
+        if (favorited == false) {
+            event.target.src=unfilledHeart
+        }
+    }
+
+
     return (
       <div className='bathroom-row'>
         <div className='image-container'>
@@ -41,7 +100,14 @@ export default class BathroomRow extends Component {
             </div>
         </div>
         <div className='heart'>
-            <img src='https://i.imgur.com/tqq4Q6I.png' alt='Heart' />
+            {!localStorage.getItem("isAuth") ? 
+                <Link to="/login"> 
+                <img src='https://i.imgur.com/tqq4Q6I.png' onMouseOver= {handleMouseOver}onMouseOut= {handleMouseOut} alt='Unfilled Heart' class="profile"/>
+                </Link>
+                :
+                <img id={button_id} src={unfilledHeart} onMouseOver= {handleMouseOver}onMouseOut= {handleMouseOut} onClick={() => {whenClicked()}} />
+            }
+
         </div>
         <div className='ratings'>
             CLEANLINESS  <b>{this.props.score_cleanliness}</b> | COMFORT <b>{this.props.score_comfort}</b> | CONVENIENCE <b>{this.props.score_convenience}</b> | AMENITIES <b>{this.props.score_amenities}</b>

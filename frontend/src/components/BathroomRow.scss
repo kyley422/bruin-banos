@@ -123,6 +123,10 @@
       object-fit: contain;
     }
   }
+  .heart:hover {
+    // background-image: url("https://i.imgur.com/qmmXb0N.png");
+    cursor: pointer;
+  }
 
   .ratings {
     // border-style: solid;

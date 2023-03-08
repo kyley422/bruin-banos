@@ -89,7 +89,9 @@ function BathroomListings(props) {
     }
 
     return <div className='bathroom-listings'>
+
     {bathroomList.map((entry, index) => {
+        // console.log(entry)
         let current_bathroom_row = <BathroomRow className='bathroom-entry' key={entry.name} 
             name={entry.name} 
             image={entry.image} 
@@ -102,6 +104,7 @@ function BathroomListings(props) {
             score_amenities={entry.score_amenities}
             top_review={topReviewTexts[index]}
         />
+        // console.log(entry.reviews[0])
         return current_bathroom_row
     })}
     </div>
