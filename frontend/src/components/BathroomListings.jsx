@@ -34,10 +34,8 @@ function getSortParam(param) {
 
 function BathroomListings(props) {
     const [bathroomList, setBathroomList] = useState([])
-
     const [topReviewTexts, setTopReviewTexts] = useState([])
-
-    const firstUpdate = useRef(true)
+    const [clear, setClear] = useState(false)
 
     useEffect(() => {
         const getPosts = async () => {
@@ -54,6 +52,11 @@ function BathroomListings(props) {
         }
         getPosts()
     },[db, props])
+
+    useEffect(() => {
+        setTopReviewTexts([])
+        setClear(!clear)
+    },[bathroomList])
 
     useEffect(() => {
         const getTopReviews = async (ref) => {
@@ -78,8 +81,8 @@ function BathroomListings(props) {
         mapReviews()
         let tempTopReviewTexts = topReviewTexts.slice()
         setTopReviewTexts(tempTopReviewTexts)
-        console.log(topReviewTexts)
-    },[bathroomList])
+        // console.log(topReviewTexts)
+    },[clear])
 
     if (bathroomList.length === 0) {
         return <div className='bathroom-listings-not-found'>No results found. Try expanding your search.</div>
