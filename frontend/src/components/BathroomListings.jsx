@@ -57,7 +57,6 @@ function BathroomListings(props) {
 
     useEffect(() => {
         const getTopReviews = async (ref) => {
-<<<<<<< Updated upstream
             try {
                 const topReviewRef = doc(db, "reviews", ref)
                 const topReview = await getDoc(topReviewRef)
@@ -69,13 +68,6 @@ function BathroomListings(props) {
                 topReviewTexts.push("None yet. Be the first to write a review!")
                 setTopReviewTexts(topReviewTexts)
             }
-=======
-            const topReviewRef = doc(db, "reviews", ref)
-            const topReview = await getDoc(topReviewRef)
-            topReviewTexts.push(topReview.data().reviewText)
-            setTopReviewTexts(topReviewTexts)
-            // console.log(topReviewTexts)
->>>>>>> Stashed changes
         }
         function mapReviews() {
             bathroomList.map((entry) => {
@@ -107,12 +99,7 @@ function BathroomListings(props) {
             score_comfort={entry.score_comfort}
             score_convenience={entry.score_convenience}
             score_amenities={entry.score_amenities}
-<<<<<<< Updated upstream
             top_review={topReviewTexts[index]}
-=======
-            review_id={entry.reviews[0]}
-            top_review={"\"" + topReviewTexts[index] + "\""}
->>>>>>> Stashed changes
         />
         // console.log(entry.reviews[0])
         return current_bathroom_row
