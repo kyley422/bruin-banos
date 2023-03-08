@@ -30,7 +30,7 @@ export default class BathroomRow extends Component {
     }
 
     var favorited = false;
-    function myfunction() {
+    function whenClicked() {
         if (!localStorage.getItem("isAuth")) { 
             <link to ="/login"></link>
         }
@@ -105,7 +105,7 @@ export default class BathroomRow extends Component {
                 <img src='https://i.imgur.com/tqq4Q6I.png' onMouseOver= {handleMouseOver}onMouseOut= {handleMouseOut} alt='Unfilled Heart' class="profile"/>
                 </Link>
                 :
-                <img id={button_id} src={unfilledHeart} onMouseOver= {handleMouseOver}onMouseOut= {handleMouseOut} onClick={() => {myfunction()}} />
+                <img id={button_id} src={unfilledHeart} onMouseOver= {handleMouseOver}onMouseOut= {handleMouseOut} onClick={() => {whenClicked()}} />
             }
 
         </div>
