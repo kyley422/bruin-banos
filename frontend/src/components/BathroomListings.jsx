@@ -97,11 +97,11 @@ function BathroomListings(props) {
             image={entry.image} 
             genderImageURL={getGenderIconURL(entry.gender)}
             total_ratings={entry.total_ratings}
-            score_overall={entry.score_overall}
-            score_cleanliness={entry.score_cleanliness}
-            score_comfort={entry.score_comfort}
-            score_convenience={entry.score_convenience}
-            score_amenities={entry.score_amenities}
+            score_overall={Math.round(entry.score_overall * 10)/10}
+            score_cleanliness={Math.round(entry.score_cleanliness * 10)/10}
+            score_comfort={Math.round(entry.score_comfort * 10)/10}
+            score_convenience={Math.round(entry.score_convenience * 10)/10}
+            score_amenities={Math.round(entry.score_amenities * 10)/10}
             top_review={topReviewTexts[index]}
         />
         // console.log(entry.reviews[0])
