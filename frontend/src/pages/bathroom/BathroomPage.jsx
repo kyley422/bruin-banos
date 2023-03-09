@@ -20,6 +20,23 @@ function getGenderIconURL(gender) {
   }
 }
 
+function ReviewListings(reviewData) {
+  return <div>
+  {console.log(reviewData.reviewData)}
+  {reviewData.reviewData.map((item, index) => {
+    return <div key={index}>
+      {item.author.name}:
+      {item.overall},
+      {item.cleanliness},
+      {item.comfort},
+      {item.convenience},
+      {item.amenities},
+      {item.reviewText}
+    </div>
+  })}
+  </div>
+}
+
 function BathroomPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [isLoading2, setIsLoading2] = useState(true);
@@ -96,20 +113,8 @@ function BathroomPage() {
             <div className='overall'>
               Total Ratings: {bathroomData.total_ratings}
             </div>
-            {/* In theory, the div below should show all the names but im doing something wrong :( */}
-            <div>
-              {console.log(reviewData)}
-              {reviewData.map((item, index) => {
-                return <div key={index}>
-                  {item.author.name}:
-                  {item.overall},
-                  {item.cleanliness},
-                  {item.comfort},
-                  {item.convenience},
-                  {item.amenities},
-                  {item.reviewText}
-                </div>
-              })}
+            <div className='review-listing-container'>
+              <ReviewListings reviewData={reviewData} />
             </div>
         </>
       )}
