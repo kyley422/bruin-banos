@@ -97,7 +97,7 @@ export default class BathroomRow extends Component {
             </div>
             <div className='overall-score'>{this.props.score_overall}</div>
             <div className='overall-ratings'>
-                ({this.props.total_ratings} reviews)
+                ({this.props.total_ratings + ((this.props.total_ratings === 1) ? " review" : " reviews")})
             </div>
         </div>
         <div className='heart'>
