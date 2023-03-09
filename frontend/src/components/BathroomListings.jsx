@@ -59,22 +59,22 @@ function BathroomListings(props) {
     },[bathroomList])
 
     useEffect(() => {
-        const getTopReviews = async (ref) => {
+        const getTopReviews = async (ref, index) => {
             try {
                 const topReviewRef = doc(db, "reviews", ref)
                 const topReview = await getDoc(topReviewRef)
-                topReviewTexts.push(topReview.data().reviewText)
+                topReviewTexts[index] = topReview.data().reviewText
                 setTopReviewTexts(topReviewTexts)
                 // console.log(topReviewTexts)
             }
             catch {
-                topReviewTexts.push("None yet. Be the first to write a review!")
+                topReviewTexts[index] = "None yet. Be the first to write a review!"
                 setTopReviewTexts(topReviewTexts)
             }
         }
         function mapReviews() {
-            bathroomList.map((entry) => {
-                getTopReviews(entry.reviews[0])
+            bathroomList.map((entry, index) => {
+                getTopReviews(entry.reviews[0], index)
                 return 0
             })
         }
