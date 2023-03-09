@@ -95,8 +95,9 @@ export default class BathroomRow extends Component {
                     }[Math.round(this.props.score_overall * 2) / 2]
                 }
             </div>
+            <div className='overall-score'>{this.props.score_overall}</div>
             <div className='overall-ratings'>
-                {this.props.total_ratings}
+                ({this.props.total_ratings} reviews)
             </div>
         </div>
         <div className='heart'>
