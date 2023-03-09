@@ -18,6 +18,13 @@
 
   display: flex;
 
+  a:link {
+    text-decoration: none;
+  }
+  a:hover {
+    color:#2774AE;
+  }
+
   .image-container {
     // border-style: solid;
     // border-color: red;

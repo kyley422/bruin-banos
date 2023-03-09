@@ -67,11 +67,11 @@ export default class BathroomRow extends Component {
     return (
       <div className='bathroom-row'>
         <div className='image-container'>
-            <img src={this.props.image} alt='Building' />
+            <a href={"/bathroom/" + this.props.id}><img src={this.props.image} alt='Building' /></a>
         </div>
         <div className='title-container'>
             <div className='title'>
-                {this.props.name}
+                <a href={"/bathroom/" + this.props.id}>{this.props.name}</a>
             </div>
             <div className='gender'>
                 <img src={this.props.genderImageURL} alt='Gender' />

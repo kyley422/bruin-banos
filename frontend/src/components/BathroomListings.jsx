@@ -91,8 +91,8 @@ function BathroomListings(props) {
     return <div className='bathroom-listings'>
 
     {bathroomList.map((entry, index) => {
-        // console.log(entry)
-        let current_bathroom_row = <BathroomRow className='bathroom-entry' key={entry.name} 
+        let current_bathroom_row = <BathroomRow className='bathroom-entry' key={entry.name}
+            id={entry.id} 
             name={entry.name} 
             image={entry.image} 
             genderImageURL={getGenderIconURL(entry.gender)}
