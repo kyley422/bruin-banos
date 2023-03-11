@@ -18,7 +18,7 @@ const Hero = () => {
           ratings, you can make informed decisions about where to go. So why
           wait? Start exploring and find the perfect bathroom for your needs
           today!
-        </div>
+        </p>
       </div>
     </div>
   );
