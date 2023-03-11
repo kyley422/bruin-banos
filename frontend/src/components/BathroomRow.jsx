@@ -19,14 +19,14 @@ export default class BathroomRow extends Component {
         const q = query(userRef, where('id', '==', auth.currentUser.uid))
         const snapshot = await getDocs(q)
         const targetUser = doc(db, "users", snapshot.docs[0].id)
-        setDoc(targetUser, {likedBathrooms: arrayUnion(this.props.name)}, {merge: true})
+        setDoc(targetUser, {likedBathrooms: arrayUnion(this.props.id)}, {merge: true})
     };
     
     const RemoveLikedBathroom = async () => { 
         const q = query(userRef, where('id', '==', auth.currentUser.uid))
         const snapshot = await getDocs(q)
-        const targetBathroom = doc(db, "users", snapshot.docs[0].id)
-        await updateDoc(targetBathroom, {likedBathrooms: arrayRemove(this.props.name)})
+        const targetUser = doc(db, "users", snapshot.docs[0].id)
+        await updateDoc(targetUser, {likedBathrooms: arrayRemove(this.props.id)})
     }
 
     var favorited = false;
