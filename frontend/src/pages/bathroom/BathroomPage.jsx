@@ -8,6 +8,16 @@ import { useNavigate } from 'react-router-dom';
 
 import './BathroomPage.scss'
 
+function word_split(word) {
+
+  for (let i = 0; i < word.length-1; i++) {
+    if (word[i] === " " && !isNaN(word[i+1])) {
+
+      return [].concat(word.slice(0, i), word.slice(i))
+    }
+  }
+}
+
 function getGenderIconURL(gender) {
   switch(gender) {
       case "male":
@@ -55,8 +65,8 @@ function BathroomPage() {
         <>
             <div className='buildingimage'>
               <div><img className="banner" src={bathroomData.image}/></div>
-              <h3 className='name'>{bathroomData.name}</h3> 
-              <h3 className='number'>{bathroomData.number}</h3>
+              <h3 className='name'>{word_split(bathroomData.name)[0]}</h3> 
+              <h3 className='number'>{word_split(bathroomData.name)[1]}</h3>
               <div><img className='gender' src={getGenderIconURL(bathroomData.gender)} /></div>
 
               <p className='overall'>Overall                 {bathroomData.score_overall}</p>
@@ -67,6 +77,8 @@ function BathroomPage() {
               <p className='convenience'>Convience                    <strong>{bathroomData.score_convenience}</strong></p>
               <p className='ameneties'>Ameneties                    <strong>{bathroomData.score_amenities}</strong></p>
             </div>
+
+            {/* <div className='gradient'></div> */}
 
             <div className='overall'>Total Ratings: {bathroomData.total_ratings}</div>
         </>
