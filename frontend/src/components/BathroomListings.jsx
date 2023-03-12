@@ -90,23 +90,27 @@ function BathroomListings(props) {
 
     return <div className='bathroom-listings'>
 
-    {bathroomList.map((entry, index) => {
-        let current_bathroom_row = <BathroomRow className='bathroom-entry' key={entry.name}
-            id={entry.id} 
-            name={entry.name} 
-            image={entry.image} 
-            genderImageURL={getGenderIconURL(entry.gender)}
-            total_ratings={entry.total_ratings}
-            score_overall={entry.score_overall}
-            score_cleanliness={entry.score_cleanliness}
-            score_comfort={entry.score_comfort}
-            score_convenience={entry.score_convenience}
-            score_amenities={entry.score_amenities}
-            top_review={topReviewTexts[index]}
-        />
-        // console.log(entry.reviews[0])
-        return current_bathroom_row
-    })}
+    {bathroomList
+        // Filter based on search box (case-insensitive)
+        .filter((entry) => entry.name.toLowerCase().includes(props.searchText.toLowerCase())) 
+        // Display all the remaining bathroom data
+        .map((entry, index) => {
+            let current_bathroom_row = <BathroomRow className='bathroom-entry' key={entry.name}
+                id={entry.id} 
+                name={entry.name} 
+                image={entry.image} 
+                genderImageURL={getGenderIconURL(entry.gender)}
+                total_ratings={entry.total_ratings}
+                score_overall={entry.score_overall}
+                score_cleanliness={entry.score_cleanliness}
+                score_comfort={entry.score_comfort}
+                score_convenience={entry.score_convenience}
+                score_amenities={entry.score_amenities}
+                top_review={topReviewTexts[index]}
+            />
+            // console.log(entry.reviews[0])
+            return current_bathroom_row
+        })}
     </div>
 }
 
