@@ -43,6 +43,7 @@ function BathroomListings(props) {
             const bathroomCollectionRef = collection(db,"bathroom")
             const q = query(
                 bathroomCollectionRef, 
+                where(getSortParam(props.sortParam), "<=", props.upperLimit),
                 where("gender", 'in', [props.male ? 'male' : null, props.female ? 'female' : null, props.neutral ? 'neutral' : null]),
                 orderBy(getSortParam(props.sortParam), "desc")
                 );

@@ -32,6 +32,7 @@ const ListingContainer = () => {
   const [neutralIsChecked, setNeutralIsChecked] = useState(true);
   const [sortParam, setSortParam] = useState("Overall");
   const [searchText, setSearchText] = useState("");
+  const [upperLimit, setUpperLimit] = useState(5);
   
   function maleHandleOnChange () {
     setMaleIsChecked(!maleIsChecked)
@@ -41,6 +42,9 @@ const ListingContainer = () => {
   }
   function neutralHandleOnChange() {
     setNeutralIsChecked(!neutralIsChecked)
+  }
+  function sliderHandleOnChange(event) {
+    setUpperLimit(parseInt(event.target.value))
   }
   function handleSearchChange(text) {
     setSearchText(text);
@@ -83,7 +87,14 @@ const ListingContainer = () => {
           <div className="filter-title">Range</div>
           <div className="slider">
             <label>
-              <input type="range" min="1" max="5" defaultValue="3" id="slider"/>
+              <input 
+                type="range" 
+                min="1" 
+                max="5" 
+                value={upperLimit}
+                onChange={sliderHandleOnChange}
+                id="slider"
+              />
             </label>
               <div className="selectValue">
                 <div className="selectValueNumber">1</div>
@@ -95,8 +106,8 @@ const ListingContainer = () => {
           </div>
         </div>
       </div>
-      <BathroomListings male={maleIsChecked} female={femaleIsChecked} 
-        neutral={neutralIsChecked} sortParam={sortParam} searchText={searchText}/>
+      <BathroomListings male={maleIsChecked} female={femaleIsChecked} neutral={neutralIsChecked} 
+      upperLimit={upperLimit} sortParam={sortParam} searchText={searchText}/>
     </div>
   );
 };
