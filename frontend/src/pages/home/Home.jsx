@@ -25,7 +25,7 @@ const Hero = () => {
   );
 };
 
-const ListingContainer = () => {
+const ListingContainer = ( {isAuth} ) => {
 
   const [maleIsChecked, setMaleIsChecked] = useState(true);
   const [femaleIsChecked, setFemaleIsChecked] = useState(true);
@@ -35,6 +35,7 @@ const ListingContainer = () => {
   
   function maleHandleOnChange () {
     setMaleIsChecked(!maleIsChecked)
+    console.log(isAuth)
   }
   function femaleHandleOnChange () {
     setFemaleIsChecked(!femaleIsChecked)
@@ -106,8 +107,9 @@ export default class Home extends Component {
     return (
       <div className="home">
         <Hero />
-        <ListingContainer />
+        <ListingContainer isAuth={this.props.isAuth}/>
       </div>
     );
   }
 }
+
