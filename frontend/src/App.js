@@ -32,8 +32,8 @@ function App() {
       <Router>
         <Navbar isAuth={isAuth} logOut={signUserOut}/>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/add-bathroom" element={<AddBathroom />} />
+          <Route path="/" element={<Home isAuth={isAuth}/>} />
+          <Route path="/add-bathroom" element={<AddBathroom isAuth={isAuth}/>} />
           <Route path="/bathroom" element={<Bathroom />} />
           <Route path="/bathroom/:bathroomId" element={<BathroomPage />} />
           <Route path="/login" element={<Login setIsAuth={setIsAuth}/>} />
