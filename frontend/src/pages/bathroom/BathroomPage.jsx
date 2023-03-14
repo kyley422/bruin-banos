@@ -1,4 +1,4 @@
-import { getDoc } from 'firebase/firestore';
+import { getDoc, getDocs, collection } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 import { db } from '../../firebase-config';
 import { doc } from 'firebase/firestore';
@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './BathroomPage.scss'
+import BathroomPageRow from '../bathroom/BathroomPageRow'
 
 function word_split(word) {
 
@@ -30,9 +31,28 @@ function getGenderIconURL(gender) {
   }
 }
 
+function ReviewListings(reviewData) {
+  return <div className='reviewListing'>
+  {/* {console.log(reviewData.reviewData)} */}
+  {reviewData.reviewData.map((item, index) => {
+    return <div key={index}>
+      {item.author.name}:
+      {item.overall},
+      {item.cleanliness},
+      {item.comfort},
+      {item.convenience},
+      {item.amenities},
+      {item.reviewText}
+    </div>
+  })}
+  </div>
+}
+
 function BathroomPage() {
     const [isLoading, setIsLoading] = useState(true);
+    const [isLoading2, setIsLoading2] = useState(true);
     const [bathroomData, setBathroomData] = useState(null);
+    const [reviewData, setReviewData] = useState([])
     const params = useParams()
     const bathroomId = params.bathroomId
     const docRef = doc(db, "bathroom", bathroomId)
@@ -42,7 +62,7 @@ function BathroomPage() {
     useEffect(() => {
         const getData = async () => {
             const data = await getDoc(docRef)
-            console.log(data)
+            // console.log(data)
             if (!data.exists()) {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
@@ -51,17 +71,41 @@ function BathroomPage() {
             setIsLoading(false);
             setBathroomData(data.data())
         };
-        
+
         getData();
     },[db])
 
-  return (
-    // idk how to center things in the screen so to see the 
-    // text i added the 5 filler lines below 
-    // (fixed by hao)
-    <div>
+    useEffect(() => {
+      const getReviews = async () => {
+        if(!isLoading) {
+          const newData = [];
 
-      {!isLoading && (
+          bathroomData.reviews.forEach(async id => {
+            const reviewRef = doc(db, "reviews", id);
+            const reviewSnap = await getDoc(reviewRef);
+
+            if (reviewSnap.exists()) {
+              newData.push(reviewSnap.data());
+              setReviewData(newData);
+              // console.log("PUSHING")
+              // console.log(reviewSnap.data())
+            }
+          });
+
+          setReviewData(newData);
+          // console.log("GOT REVIEWS");
+          // console.log(reviewData)
+          setIsLoading2(false)
+        }
+      };
+      getReviews();
+      let tempReviewData = reviewData.slice()
+      setReviewData(tempReviewData)
+    },[bathroomData, isLoading])
+
+  return (
+    <div>
+      {!isLoading && !isLoading2 && (
         <>
             <div className='buildingimage'>
               <div><img className="banner" src={bathroomData.image}/></div>
@@ -79,16 +123,27 @@ function BathroomPage() {
             </div>
 
             {/* <div className='gradient'></div> */}
-
-            <div className='overall'>Total Ratings: {bathroomData.total_ratings}</div>
+            <div className='review-listing-container'>
+              {reviewData.map((item, index) => {
+                let current_bathroompage_row = <BathroomPageRow className='bathroompage-entry' key={index} 
+                  name={item.author.name}
+                  overall={item.overall}
+                  cleanliness={item.cleanliness}
+                  comfort={item.comfort}
+                  convenience={item.convenience}
+                  amenities={item.amenities}
+                  reviewText={item.reviewText}
+                />
+                return current_bathroompage_row
+              })}
+            </div>
         </>
       )}
-
     </div>
-
   );
 
   // Have React display some information using Bathroom ID
+  
   // Have React show invalid error if cant find Bathroom ID
 }
 
