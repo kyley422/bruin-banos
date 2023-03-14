@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import './BathroomPage.scss'
+import BathroomPageRow from '../bathroom/BathroomPageRow'
 
 function getGenderIconURL(gender) {
   switch(gender) {
@@ -110,11 +111,19 @@ function BathroomPage() {
               <p className='convenience'>Convience                    <strong>{bathroomData.score_convenience}</strong></p>
               <p className='ameneties'>Ameneties                    <strong>{bathroomData.score_amenities}</strong></p>
             </div>
-            <div className='overall'>
-              Total Ratings: {bathroomData.total_ratings}
-            </div>
             <div className='review-listing-container'>
-              <ReviewListings reviewData={reviewData} />
+              {reviewData.map((item, index) => {
+                let current_bathroompage_row = <BathroomPageRow className='bathroompage-entry' key={index} 
+                  name={item.author.name}
+                  overall={item.overall}
+                  cleanliness={item.cleanliness}
+                  comfort={item.comfort}
+                  convenience={item.convenience}
+                  amenities={item.amenities}
+                  reviewText={item.reviewText}
+                />
+                return current_bathroompage_row
+              })}
             </div>
         </>
       )}
