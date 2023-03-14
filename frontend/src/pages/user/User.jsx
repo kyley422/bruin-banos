@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 // import BathroomRow from '../../components/BathroomRow'
 import BathroomListings from '../../components/BathroomListings'
 import './User.scss'
+import UserFavoriteListings from './UserFavoriteListings';
+import UserReviewsListings from './UserReviewsListings';
 
 // import { signInWithGoogle } from '../login/Login'
 // const Hero = () => {
@@ -71,6 +73,8 @@ export default class UserPage extends Component {
         <Welcome />
         {/* <ListingContainer /> */}
         <Favorites />
+        <UserReviewsListings></UserReviewsListings>
+        {/* <UserFavoriteListings></UserFavoriteListings> */}
 
       </div>
     )
