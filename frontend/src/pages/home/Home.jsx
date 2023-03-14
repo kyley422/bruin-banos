@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { useState } from "react";
 import "./Home.scss";
 import SearchBar from "../../components/SearchBar";
+import ReactSlider from 'react-slider'
 
 import BathroomListings from "../../components/BathroomListings";
 
@@ -86,16 +87,19 @@ const ListingContainer = () => {
         <div className="filter-component">
           <div className="filter-title">Range</div>
           <div className="slider">
-            <label>
-              <input 
-                type="range" 
-                min="1" 
-                max="5" 
-                value={upperLimit}
-                onChange={sliderHandleOnChange}
-                id="slider"
-              />
-            </label>
+          <ReactSlider
+              className="horizontal-slider"
+              thumbClassName="example-thumb"
+              trackClassName="example-track"
+              defaultValue={[1, 5]}
+              max={5}
+              min={1}
+              ariaValuetext={state => `Thumb value ${state.valueNow}`}
+              renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
+              onChange={(value, index) => console.log(value)}
+              pearling
+              minDistance={1}
+          />
               <div className="selectValue">
                 <div className="selectValueNumber">1</div>
                 <div className="selectValueNumber">2</div>
