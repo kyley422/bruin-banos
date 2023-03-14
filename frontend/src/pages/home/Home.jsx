@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { useState } from "react";
 import "./Home.scss";
 import SearchBar from "../../components/SearchBar";
+import ReactSlider from 'react-slider'
 
 import BathroomListings from "../../components/BathroomListings";
 
@@ -32,6 +33,8 @@ const ListingContainer = ( {isAuth} ) => {
   const [neutralIsChecked, setNeutralIsChecked] = useState(true);
   const [sortParam, setSortParam] = useState("Overall");
   const [searchText, setSearchText] = useState("");
+  const [upperLimit, setUpperLimit] = useState(5);
+  const [lowerLimit, setLowerLimit] = useState(1);
   
   function maleHandleOnChange () {
     setMaleIsChecked(!maleIsChecked)
@@ -42,6 +45,10 @@ const ListingContainer = ( {isAuth} ) => {
   }
   function neutralHandleOnChange() {
     setNeutralIsChecked(!neutralIsChecked)
+  }
+  function sliderHandleOnChange(values) {
+    setUpperLimit(parseInt(values[1]));
+    setLowerLimit(parseInt(values[0]));
   }
   function handleSearchChange(text) {
     setSearchText(text);
@@ -83,9 +90,19 @@ const ListingContainer = ( {isAuth} ) => {
         <div className="filter-component">
           <div className="filter-title">Range</div>
           <div className="slider">
-            <label>
-              <input type="range" min="1" max="5" defaultValue="3" id="slider"/>
-            </label>
+          <ReactSlider
+              className="horizontal-slider"
+              thumbClassName="example-thumb"
+              trackClassName="example-track"
+              defaultValue={[1, 5]}
+              max={5}
+              min={1}
+              ariaValuetext={state => `Thumb value ${state.valueNow}`}
+              renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
+              onChange={sliderHandleOnChange}
+              pearling
+              minDistance={1}
+          />
               <div className="selectValue">
                 <div className="selectValueNumber">1</div>
                 <div className="selectValueNumber">2</div>
@@ -96,8 +113,8 @@ const ListingContainer = ( {isAuth} ) => {
           </div>
         </div>
       </div>
-      <BathroomListings male={maleIsChecked} female={femaleIsChecked} 
-        neutral={neutralIsChecked} sortParam={sortParam} searchText={searchText}/>
+      <BathroomListings male={maleIsChecked} female={femaleIsChecked} neutral={neutralIsChecked} 
+      upperLimit={upperLimit} lowerLimit={lowerLimit} sortParam={sortParam} searchText={searchText}/>
     </div>
   );
 };
