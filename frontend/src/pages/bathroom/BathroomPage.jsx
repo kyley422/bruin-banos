@@ -21,7 +21,7 @@ function getGenderIconURL(gender) {
 }
 
 function ReviewListings(reviewData) {
-  return <div>
+  return <div className='reviewListing'>
   {console.log(reviewData.reviewData)}
   {reviewData.reviewData.map((item, index) => {
     return <div key={index}>
