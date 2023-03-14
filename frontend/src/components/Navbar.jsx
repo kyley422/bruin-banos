@@ -20,8 +20,6 @@ export default class Navbar extends Component {
               Bruin Baños 
             </Link>
 
-            <SearchBar/>
-
             <Link to={this.props.isAuth ? "/review" : "/login"}> <Button /> </Link>
 
             {!this.props.isAuth ? <Link to="/login"> 

@@ -34,6 +34,7 @@ const ListingContainer = () => {
   const [sortParam, setSortParam] = useState("Overall");
   const [searchText, setSearchText] = useState("");
   const [upperLimit, setUpperLimit] = useState(5);
+  const [lowerLimit, setLowerLimit] = useState(1);
   
   function maleHandleOnChange () {
     setMaleIsChecked(!maleIsChecked)
@@ -44,8 +45,9 @@ const ListingContainer = () => {
   function neutralHandleOnChange() {
     setNeutralIsChecked(!neutralIsChecked)
   }
-  function sliderHandleOnChange(event) {
-    setUpperLimit(parseInt(event.target.value))
+  function sliderHandleOnChange(values) {
+    setUpperLimit(parseInt(values[1]));
+    setLowerLimit(parseInt(values[0]));
   }
   function handleSearchChange(text) {
     setSearchText(text);
@@ -96,7 +98,7 @@ const ListingContainer = () => {
               min={1}
               ariaValuetext={state => `Thumb value ${state.valueNow}`}
               renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
-              onChange={(value, index) => console.log(value)}
+              onChange={sliderHandleOnChange}
               pearling
               minDistance={1}
           />
@@ -111,7 +113,7 @@ const ListingContainer = () => {
         </div>
       </div>
       <BathroomListings male={maleIsChecked} female={femaleIsChecked} neutral={neutralIsChecked} 
-      upperLimit={upperLimit} sortParam={sortParam} searchText={searchText}/>
+      upperLimit={upperLimit} lowerLimit={lowerLimit} sortParam={sortParam} searchText={searchText}/>
     </div>
   );
 };
