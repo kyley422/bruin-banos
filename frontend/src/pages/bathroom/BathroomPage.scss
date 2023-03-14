@@ -122,3 +122,75 @@ body {
     line-height: 29px;
   }
 }
+
+
+.bathroompage-row {
+  border-radius: 15px;
+  margin-top: 15px;
+  margin-left: 350px;
+  margin-bottom: 100px;
+  background-color: #fcfcfc;
+  width: 200px;
+  height: 200px;
+  
+  .bathroom-page-row-profile {
+    .image-container {
+      position: relative;
+      display: flex;
+
+      aspect-ratio: 1/1;
+      width: 80%;
+  
+      margin-left: 18px;
+  
+      justify-content: center;
+      img {
+        border-radius: 15px;
+        width: 70%;
+        height: 70%;
+        object-fit: cover;
+      }
+    }
+
+    .review_name {
+      position: relative;
+      text-align: center;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      .Name {
+        font-size: 15px;
+        font-weight: 700;
+        margin-top: -40px;
+        
+      }
+      .Rated {
+        margin-top: 10px;
+        font-size: 12px;
+        margin-top: 10px;
+      }
+    }
+
+    .poops {
+      position: relative;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: -10px;
+      width: 100px;
+      img {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+
+  }
+  
+  .bathroom-page-row-review {
+    position: absolute;
+    display: flex;
+    font-size: 14px;
+  }
+  
+}
