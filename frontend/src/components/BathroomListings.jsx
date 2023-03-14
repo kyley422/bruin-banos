@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import {doc, getDoc, get, getDocs, collection} from 'firebase/firestore' 
-import { db } from '../firebase-config';
+import { db, auth } from '../firebase-config';
 import { query, where, orderBy } from "firebase/firestore";
 
 import BathroomRow from '../components/BathroomRow'
@@ -35,6 +35,7 @@ function getSortParam(param) {
 function BathroomListings(props) {
     const [bathroomList, setBathroomList] = useState([])
     const [topReviewTexts, setTopReviewTexts] = useState([])
+    const [favoritedBathrooms, setFavoritedBathrooms] = useState([])
     const [clear, setClear] = useState(false)
 
     useEffect(() => {
@@ -51,6 +52,25 @@ function BathroomListings(props) {
             setBathroomList(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
         }
         getPosts()
+    },[db, props])
+
+    useEffect(() => {
+        const getFavorites = async () => {
+            console.log("made it here yipee!")
+            if (localStorage.getItem("isAuth")) { 
+                const userRef = collection(db, "users");
+                const q = query(userRef, where('id', '==', auth.currentUser.uid))
+                const snapshot = await getDocs(q)
+                const targetUser = doc(db, "users", snapshot.docs[0].id)
+                const docsSnap = await getDoc(targetUser)
+                setFavoritedBathrooms(docsSnap.data().likedBathrooms)
+                console.log("made it here yipee 2!")
+
+            }
+            else {
+            }
+        }
+        getFavorites()
     },[db, props])
 
     useEffect(() => {
@@ -90,6 +110,7 @@ function BathroomListings(props) {
 
     return <div className='bathroom-listings'>
 
+
     {bathroomList
         // Filter based on search box (case-insensitive)
         .filter((entry) => entry.name.toLowerCase().includes(props.searchText.toLowerCase())) 
@@ -107,6 +128,7 @@ function BathroomListings(props) {
                 score_convenience={entry.score_convenience}
                 score_amenities={entry.score_amenities}
                 top_review={topReviewTexts[index]}
+                fav_list={favoritedBathrooms}
             />
             // console.log(entry.reviews[0])
             return current_bathroom_row
