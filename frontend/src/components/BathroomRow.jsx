@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './BathroomRow.scss'
-import { getDocs, updateDoc, collection, arrayRemove, setDoc, doc, arrayUnion, query, where } from 'firebase/firestore'
+import { getDoc, getDocs, updateDoc, collection, arrayRemove, setDoc, doc, arrayUnion, query, where } from 'firebase/firestore'
 import { db, auth } from '../firebase-config';
 import { Link } from 'react-router-dom'
 
@@ -11,10 +11,13 @@ const userRef = collection(db, "users");
 const unfilledHeart = "https://i.imgur.com/tqq4Q6I.png"
 const filledHeart = "https://i.imgur.com/qmmXb0N.png"
 
+// var q10 = query(userRef, where('id', '==', auth.currentUser.uid))
+// var docs = getDocs(q10)
+// console.log(docs)
 
 export default class BathroomRow extends Component {
   render() {
-
+    console.log(this.props.userData)
     const addLikedBathroom = async () => {
         const q = query(userRef, where('id', '==', auth.currentUser.uid))
         const snapshot = await getDocs(q)
@@ -29,7 +32,11 @@ export default class BathroomRow extends Component {
         await updateDoc(targetUser, {likedBathrooms: arrayRemove(this.props.id)})
     }
 
+    // getFavorites()
     var favorited = false;
+    // if (this.props.id ) {
+    //     favorited = true;
+    // }
     function whenClicked() {
         if (!localStorage.getItem("isAuth")) { 
             <link to ="/login"></link>

@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import {doc, getDoc, get, getDocs, collection} from 'firebase/firestore' 
-import { db } from '../firebase-config';
+import { db, auth } from '../firebase-config';
 import { query, where, orderBy } from "firebase/firestore";
 
 import BathroomRow from '../components/BathroomRow'
+
+const userRef = collection(db, "users");
+
 
 function getGenderIconURL(gender) {
     switch(gender) {
@@ -16,6 +19,7 @@ function getGenderIconURL(gender) {
             return "https://i.imgur.com/NwvJX2F.png"
     }
 }
+
 
 function getSortParam(param) {
     switch(param) {
@@ -32,10 +36,26 @@ function getSortParam(param) {
     }
 }
 
+const q = query(userRef, where('id', '==', auth.currentUser.uid))
+const snapshot = await getDocs(q)
+const targetUser = doc(db, "users", snapshot.docs[0].id)
+const docsSnap = await getDoc(targetUser)
+
 function BathroomListings(props) {
     const [bathroomList, setBathroomList] = useState([])
     const [topReviewTexts, setTopReviewTexts] = useState([])
     const [clear, setClear] = useState(false)
+
+    // const getFavorites = async () => {
+
+        // console.log(docsSnap.data())
+        // console.log(snapshot.docs[0].id)
+        // return snapshot
+        // const targetUser = doc(db, "users", snapshot.docs[0].id)
+        // return docsSnap.data()
+    // };
+
+
 
     useEffect(() => {
         const getPosts = async () => {
@@ -107,6 +127,7 @@ function BathroomListings(props) {
                 score_convenience={entry.score_convenience}
                 score_amenities={entry.score_amenities}
                 top_review={topReviewTexts[index]}
+                userData={getFavorites}
             />
             // console.log(entry.reviews[0])
             return current_bathroom_row
