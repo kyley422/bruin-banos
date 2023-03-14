@@ -56,7 +56,6 @@ function BathroomListings(props) {
 
     useEffect(() => {
         const getFavorites = async () => {
-            console.log("made it here yipee!")
             if (localStorage.getItem("isAuth")) { 
                 const userRef = collection(db, "users");
                 const q = query(userRef, where('id', '==', auth.currentUser.uid))
@@ -64,14 +63,12 @@ function BathroomListings(props) {
                 const targetUser = doc(db, "users", snapshot.docs[0].id)
                 const docsSnap = await getDoc(targetUser)
                 setFavoritedBathrooms(docsSnap.data().likedBathrooms)
-                console.log("made it here yipee 2!")
-
             }
             else {
             }
         }
         getFavorites()
-    },[db, props])
+    },[bathroomList])
 
     useEffect(() => {
         setTopReviewTexts([])
