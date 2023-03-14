@@ -1,3 +1,12 @@
+.bathroom-listings-not-found {
+  // border-style: solid;
+  // border-color: green;
+  margin: auto;
+  margin-top: 20px;
+  font-weight: bold;
+  color: #9d9d9d;
+}
+
 .bathroom-row {
   // border-style: solid;
   // border-color: green;
@@ -8,6 +17,13 @@
   background-color: #fcfcfc;
 
   display: flex;
+
+  a:link {
+    text-decoration: none;
+  }
+  a:hover {
+    color: #2774ae;
+  }
 
   .image-container {
     // border-style: solid;
@@ -61,8 +77,6 @@
     }
   }
 
-
-
   .overall-review-container {
     // border-style: solid;
     // border-color: red;
@@ -78,7 +92,7 @@
     .poops {
       // border-style: solid;
       // border-color: blue;
-  
+
       position: relative;
       width: 100px;
       img {
@@ -87,15 +101,17 @@
         object-fit: contain;
       }
     }
+    .overall-score {
+      margin-top: 2px;
+      margin-left: 10px;
+      font-weight: bold;
+    }
     .overall-ratings {
       margin-top: 2px;
-      margin-left: 15px;
-      color: #9D9D9D;
+      margin-left: 10px;
+      color: #9d9d9d;
     }
   }
-
-
-
 
   .heart {
     // border-style: solid;
@@ -113,6 +129,10 @@
       height: 100%;
       object-fit: contain;
     }
+  }
+  .heart:hover {
+    // background-image: url("https://i.imgur.com/qmmXb0N.png");
+    cursor: pointer;
   }
 
   .ratings {
@@ -163,6 +183,7 @@
 
     text-align: left;
     font-size: 14px;
+    color: #5d5d5d;
 
     overflow: hidden;
   }

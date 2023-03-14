@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { useState } from "react";
 import "./Home.scss";
+import SearchBar from "../../components/SearchBar";
 
 import BathroomListings from "../../components/BathroomListings";
 
@@ -24,22 +26,43 @@ const Hero = () => {
 };
 
 const ListingContainer = () => {
+
+  const [maleIsChecked, setMaleIsChecked] = useState(true);
+  const [femaleIsChecked, setFemaleIsChecked] = useState(true);
+  const [neutralIsChecked, setNeutralIsChecked] = useState(true);
+  const [sortParam, setSortParam] = useState("Overall");
+  const [searchText, setSearchText] = useState("");
+  
+  function maleHandleOnChange () {
+    setMaleIsChecked(!maleIsChecked)
+  }
+  function femaleHandleOnChange () {
+    setFemaleIsChecked(!femaleIsChecked)
+  }
+  function neutralHandleOnChange() {
+    setNeutralIsChecked(!neutralIsChecked)
+  }
+  function handleSearchChange(text) {
+    setSearchText(text);
+  }
+
   return (
     <div className="listing-container">
       <div className="filter-container">
+        <SearchBar onInputChange={handleSearchChange} />
         <div className="filter-component">
           <div className="filter-title">Filter</div>
           <div className="gender-list">
             <div className="checkbox-component">
-              <input type="checkbox" />
+              <input type="checkbox" checked={maleIsChecked} onChange={maleHandleOnChange}/>
               <label for="vehicle1">Male</label>
             </div>
             <div className="checkbox-component">
-              <input type="checkbox" />
+              <input type="checkbox" checked={femaleIsChecked} onChange={femaleHandleOnChange}/>
               <label for="vehicle2">Female</label>
             </div>
             <div className="checkbox-component">
-              <input type="checkbox" />
+              <input type="checkbox" checked={neutralIsChecked} onChange={neutralHandleOnChange}/>
               <label for="vehicle3">All Gender</label>
             </div>
           </div>
@@ -47,7 +70,7 @@ const ListingContainer = () => {
         <div className="filter-component">
           <div className="filter-title">Sort Rating</div>
           <div className="dropdown-container">
-            <select className="dropdown">
+            <select className="dropdown" onChange={(e) => setSortParam(e.target.value)}>
               <option value="Overall">Overall</option>
               <option value="Cleanliness">Cleanliness</option>
               <option value="Comfort">Comfort</option>
@@ -72,7 +95,8 @@ const ListingContainer = () => {
           </div>
         </div>
       </div>
-      <BathroomListings />
+      <BathroomListings male={maleIsChecked} female={femaleIsChecked} 
+        neutral={neutralIsChecked} sortParam={sortParam} searchText={searchText}/>
     </div>
   );
 };

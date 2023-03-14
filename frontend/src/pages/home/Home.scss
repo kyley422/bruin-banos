@@ -10,6 +10,7 @@ body {
 .hero {
     display: flex;
     width: 1065px;
+    height: 322px;
     margin: auto;
     border-radius: 15px;
 
@@ -22,6 +23,9 @@ body {
         padding-left: 100px;
         width: 25%;
         margin: auto;
+        img {
+            width: 80%;
+        }
     }
     .text-container {
         position: relative;
@@ -34,8 +38,12 @@ body {
             color: white;
         }
         .hero-content {
+            // border-style: solid;
+            // border-color: blue;
             color: white;
             width: 75%;
+            font-size: 18px;
+            line-height: 100%;
         }
     }
 }
