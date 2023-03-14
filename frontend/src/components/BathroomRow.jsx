@@ -29,7 +29,7 @@ export default class BathroomRow extends Component {
         await updateDoc(targetUser, {likedBathrooms: arrayRemove(this.props.id)})
     }
     var favorited = false;
-    console.log(this.props.fav_list)
+    // console.log(this.props.fav_list)
     if (this.props.fav_list) {
         if ((this.props.fav_list).includes(this.props.id)) {
             // console.log("this is inside the check")
@@ -37,7 +37,7 @@ export default class BathroomRow extends Component {
             favorited = true;
             // let displayImage = document.getElementById(button_id)
             // displayImage.src = filledHeart
-            console.log(favorited)
+            // console.log(favorited)
         }
     }
 

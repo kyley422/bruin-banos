@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import "./Home.scss";
-import SearchBar from "../../components/SearchBar";
 import ReactSlider from 'react-slider'
 
 import BathroomListings from "../../components/BathroomListings";
@@ -32,13 +32,13 @@ const ListingContainer = ( {isAuth} ) => {
   const [femaleIsChecked, setFemaleIsChecked] = useState(true);
   const [neutralIsChecked, setNeutralIsChecked] = useState(true);
   const [sortParam, setSortParam] = useState("Overall");
-  const [searchText, setSearchText] = useState("");
   const [upperLimit, setUpperLimit] = useState(5);
   const [lowerLimit, setLowerLimit] = useState(1);
-  
+  const [searchParams] = useSearchParams();
+  var searchText = searchParams.get('search') ? searchParams.get('search') : "";
+
   function maleHandleOnChange () {
     setMaleIsChecked(!maleIsChecked)
-    console.log(isAuth)
   }
   function femaleHandleOnChange () {
     setFemaleIsChecked(!femaleIsChecked)
@@ -50,14 +50,10 @@ const ListingContainer = ( {isAuth} ) => {
     setUpperLimit(parseInt(values[1]));
     setLowerLimit(parseInt(values[0]));
   }
-  function handleSearchChange(text) {
-    setSearchText(text);
-  }
 
   return (
     <div className="listing-container">
       <div className="filter-container">
-        <SearchBar onInputChange={handleSearchChange} />
         <div className="filter-component">
           <div className="filter-title">Filter</div>
           <div className="gender-list">
