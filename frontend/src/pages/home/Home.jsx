@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { useState } from "react";
 import "./Home.scss";
+import SearchBar from "../../components/SearchBar";
 
 import BathroomListings from "../../components/BathroomListings";
 
@@ -24,26 +25,32 @@ const Hero = () => {
   );
 };
 
-const ListingContainer = () => {
+const ListingContainer = ( {isAuth} ) => {
 
   const [maleIsChecked, setMaleIsChecked] = useState(true);
   const [femaleIsChecked, setFemaleIsChecked] = useState(true);
   const [neutralIsChecked, setNeutralIsChecked] = useState(true);
   const [sortParam, setSortParam] = useState("Overall");
+  const [searchText, setSearchText] = useState("");
   
-  const maleHandleOnChange = () => {
+  function maleHandleOnChange () {
     setMaleIsChecked(!maleIsChecked)
-  };
-  const femaleHandleOnChange = () => {
+    console.log(isAuth)
+  }
+  function femaleHandleOnChange () {
     setFemaleIsChecked(!femaleIsChecked)
-  };
-  const neutralHandleOnChange = () => {
+  }
+  function neutralHandleOnChange() {
     setNeutralIsChecked(!neutralIsChecked)
-  };
+  }
+  function handleSearchChange(text) {
+    setSearchText(text);
+  }
 
   return (
     <div className="listing-container">
       <div className="filter-container">
+        <SearchBar onInputChange={handleSearchChange} />
         <div className="filter-component">
           <div className="filter-title">Filter</div>
           <div className="gender-list">
@@ -90,7 +97,7 @@ const ListingContainer = () => {
         </div>
       </div>
       <BathroomListings male={maleIsChecked} female={femaleIsChecked} 
-        neutral={neutralIsChecked} sortParam={sortParam}/>
+        neutral={neutralIsChecked} sortParam={sortParam} searchText={searchText}/>
     </div>
   );
 };
@@ -100,8 +107,9 @@ export default class Home extends Component {
     return (
       <div className="home">
         <Hero />
-        <ListingContainer />
+        <ListingContainer isAuth={this.props.isAuth}/>
       </div>
     );
   }
 }
+
