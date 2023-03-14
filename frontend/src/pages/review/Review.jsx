@@ -4,6 +4,7 @@ import { db, auth } from "../../firebase-config";
 import { useNavigate } from "react-router-dom";
 
 import "./Review.scss";
+import { Container } from "@mui/material";
 
 function Review({ isAuth }) {
   const [bathroom, setBathroom] = useState("");
@@ -39,6 +40,10 @@ function Review({ isAuth }) {
     }
   }, []);
 
+  // function BasicRating() {
+  //   const [value, setValue] = (React.useState < number) | (null > 2);
+  // }
+
   return (
     <div>
       <head>
@@ -47,58 +52,80 @@ function Review({ isAuth }) {
           type="text/css"
           rel="stylesheet"
         ></link>
-        ;
+        <link
+          href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+          rel="stylesheet"
+        ></link>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="starrr.min.js"></script>
       </head>
 
       <h1>Write a Review</h1>
 
       <box className="background-box-review">
-        <h2>Add a review to UCLA</h2>
-        <p>Enter the details about the bathroom you are reviewing.</p>
+        <div class="review">
+          <div class="text cleanliness">
+            <h3>Rate the cleanliness</h3>
+            How clean was your experience? Consider the sinks, floor, walls,
+            stalls, and toilets.
+          </div>
+          <div class="starRating">
+            <i class="fa fa-regular fa-star"></i>
+            <i class="fa fa-regular fa-star"></i>
+            <i class="fa fa-regular fa-star"></i>
+            <i class="fa fa-regular fa-star"></i>
+            <i class="fa fa-regular fa-star"></i>
+          </div>
+        </div>
 
-        <div className="bathroom-attributes-1">
-          <div className="building">
-            {" "}
-            Building Name
-            <select className="buildingDropdown">
-              <option value="Dodd Hall">Dodd Hall</option>
-              <option
-                value="Anderson Hall"
-                onChange={(event) => {
-                  setBathroom(event.target.value);
-                }}
-              >
-                {" "}
-                Anderson Hall{" "}
-              </option>
-            </select>
+        <div class="review">
+          <div class="text comfort">
+            <h3>Rate the comfort</h3>
+            How comfortable did the bathroom seem? Consider lighting, seating,
+            or the layout of the bathroom.
           </div>
-          <div className="roomNum">
-            Room Number
-            <select className="roomNumDropdown">
-              <option value="123">123</option>
-              <option
-                value="124"
-                onChange={(event) => {
-                  setBathroom(event.target.value);
-                }}
-              >
-                124
-              </option>
-            </select>
+          <div class="starRating">
+            <i class="fa fa-regular fa-star"></i>
+            <i class="fa fa-regular fa-star"></i>
+            <i class="fa fa-regular fa-star"></i>
+            <i class="fa fa-regular fa-star"></i>
+            <i class="fa fa-regular fa-star"></i>
           </div>
-          <div className="gender">
-            Gender
-            <select className="genderDropdown">
-              <option value="Women's">Women's</option>
-              <option value="Men's">Men's</option>
-              <option value="All-Gender">Men's</option>
-            </select>
+        </div>
+
+        <div class="review">
+          <div class="text convenience">
+            <h3>Rate the convenience</h3>
+            How easy was the bathroom to find? Factor in location the bathroom,
+            or other convenience factors such as ease of use of the facilities.
+          </div>
+          <div class="starRating">
+            <i class="fa fa-regular fa-star"></i>
+            <i class="fa fa-regular fa-star"></i>
+            <i class="fa fa-regular fa-star"></i>
+            <i class="fa fa-regular fa-star"></i>
+            <i class="fa fa-regular fa-star"></i>
+          </div>
+        </div>
+
+        <div class="review">
+          <div class="text amenities">
+            <h3>Rate the amenities</h3>
+            What was the supply of toilet paper and other amenities? Consider
+            the supplies of soap, seat coverings, feminine products (if
+            applicable).
+          </div>
+          <div class="starRating">
+            <i class="fa fa-regular fa-star"></i>
+            <i class="fa fa-regular fa-star"></i>
+            <i class="fa fa-regular fa-star"></i>
+            <i class="fa fa-regular fa-star"></i>
+            <i class="fa fa-regular fa-star"></i>
           </div>
         </div>
       </box>
 
-      {/* <div>
+      {/*<div>
         <label> Bathroom:</label>
         <input
           placeholder="Bathroom..."
@@ -106,8 +133,8 @@ function Review({ isAuth }) {
             setBathroom(event.target.value);
           }}
         />
-      </div> */}
-      {/* <div>
+      </div>
+       <div>
         <label> Overall:</label>
         <input
           placeholder="Overall Rating 1-5"

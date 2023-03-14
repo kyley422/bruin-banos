@@ -2,56 +2,58 @@ body{
     font-family: 'Inter';
     padding: 5px;
 }
-h2{
-    padding-left: 10px;
+h1{
+    padding-left: 186px;
+    color: #2774AE;
 }
+
 p{
-    padding-left: 10px;
+    padding-left: 50px;
 }
+i {
+    padding: 5px;
+    }
+
+.starRating {
+    width: 100%;
+    padding-top: 30px;
+    padding-right: 150px;
+    font-size: 50px;
+    display: flex;
+    justify-content: flex-end;
+ }
+ 
+ .rating__star {
+    cursor: pointer;
+    
+    color: #f5d729b2;
+    
+ }
+ 
+ .text{
+    padding-top: 30px;
+    word-wrap: normal; 
+    max-width: 500px; 
+    color: black;
+ }
+
+ .review{
+    display: flex;
+    padding-left: 50px;
+    justify-content: space-between;
+    align-items: center;
+    color:#FFD100
+ }
 
 .background-box-review{
     position: absolute;
     width: 1068px;
-    height: 3000px;
+    height: 1500px;
     border-bottom: 30px;
     left: 186px;
-    top: 244px;
 
     background: #FCFCFC;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-}
-
-
-.buildingDropdown{
-    padding: 10px;
-    position: absolute;
-    width: 675px;
-    height: 42px;
-    left: 120px;
-    top: -50px;
-
-    border: 1px solid #D9D9D9;
-    border-radius: 15px;
-}
-.roomNumDropdown{
-    padding: 10px;
-    position: absolute;
-    width: 184px;
-    height: 42px;
-    left: 120px;
-    top: 120px;
-    border: 1px solid #D9D9D9;
-    border-radius: 15px;
-}
-.genderDropdown{
-    padding: 10px;
-    position: absolute;
-    width: 200px;
-    height: 42px;
-    left: 590px;
-    top: 120px;   
-    border: 1px solid #D9D9D9;
     border-radius: 15px;
 }
 
@@ -67,25 +69,25 @@ p{
 .comment{
     box-sizing: border-box;
 
-position: absolute;
-width: 988px;
-height: 361px;
-left: 226px;
-top: 468px;
+    position: absolute;
+    width: 988px;
+    height: 361px;
+    left: 226px;
+    top: 800px;
 
-background: #FFFFFF;
-border: 2px solid #8BB8E8;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 15px;
-padding-bottom: 20px;
+    background: #FFFFFF;
+    border: 2px solid #8BB8E8;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    padding-bottom: 20px;
 }
 
 .next {
     position: absolute;
     left: 51.6%;
-    right: 41.47%;
-    top: 87.44%;
-    bottom: 9.57%;
+   // right: 41.47%;
+    top: 800px;
+   // bottom: 9.57%;
 
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
