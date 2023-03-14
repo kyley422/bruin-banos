@@ -30,13 +30,15 @@ export default class BathroomRow extends Component {
     }
     var favorited = false;
     console.log(this.props.fav_list)
-    if ((this.props.fav_list).includes(this.props.id)) {
-        // console.log("this is inside the check")
-        // console.log(this.props.id)
-        favorited = true;
-        // let displayImage = document.getElementById(button_id)
-        // displayImage.src = filledHeart
-        console.log(favorited)
+    if (this.props.fav_list) {
+        if ((this.props.fav_list).includes(this.props.id)) {
+            // console.log("this is inside the check")
+            // console.log(this.props.id)
+            favorited = true;
+            // let displayImage = document.getElementById(button_id)
+            // displayImage.src = filledHeart
+            console.log(favorited)
+        }
     }
 
     function whenClicked() {
