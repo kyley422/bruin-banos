@@ -33,7 +33,7 @@ function getGenderIconURL(gender) {
 
 function ReviewListings(reviewData) {
   return <div className='reviewListing'>
-  {console.log(reviewData.reviewData)}
+  {/* {console.log(reviewData.reviewData)} */}
   {reviewData.reviewData.map((item, index) => {
     return <div key={index}>
       {item.author.name}:
@@ -62,7 +62,7 @@ function BathroomPage() {
     useEffect(() => {
         const getData = async () => {
             const data = await getDoc(docRef)
-            console.log(data)
+            // console.log(data)
             if (!data.exists()) {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");

@@ -8,8 +8,8 @@ import Button from "./Button";
 
 export default class Navbar extends Component {
   render() {
-    console.log("this is in navbar:");
-    console.log(this.props);
+    // console.log("this is in navbar:");
+    // console.log(this.props);
     return (
       <nav>
         <Link to="/" class="logo">
@@ -19,6 +19,8 @@ export default class Navbar extends Component {
         <Link to="/" class="home">
           Bruin Baños
         </Link>
+
+        <SearchBar />
 
         <Link to={this.props.isAuth ? "/review" : "/login"}> <Button /> </Link>
 
