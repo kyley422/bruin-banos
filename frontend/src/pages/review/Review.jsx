@@ -13,9 +13,6 @@ import {
 import { db, auth } from "../../firebase-config";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-import StarRating from "./StarRating";
-import "./Review.scss";
-
 function Review({ isAuth }) {
   const [bathroom, setBathroom] = useState("");
   const [reviewText, setReviewText] = useState("");
@@ -117,90 +114,17 @@ function Review({ isAuth }) {
     }
   }, []);
 
-  // function BasicRating() {
-  //   const [value, setValue] = (React.useState < number) | (null > 2);
-  // }
-
   return (
     <div>
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
-          type="text/css"
-          rel="stylesheet"
-        ></link>
-        <link
-          href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
-          rel="stylesheet"
-        ></link>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script src="starrr.min.js"></script>
-      </head>
-
-      <h1>Write a Review</h1>
-
-      <box className="background-box-review">
-        <div class="review">
-          <div class="text cleanliness">
-            <h3>Rate the cleanliness</h3>
-            How clean was your experience? Consider the sinks, floor, walls,
-            stalls, and toilets.
-          </div>
-          <div class="starRating">
-            <StarRating></StarRating>
-          </div>
-        </div>
-
-        <div class="review">
-          <div class="text comfort">
-            <h3>Rate the comfort</h3>
-            How comfortable did the bathroom seem? Consider lighting, seating,
-            or the layout of the bathroom.
-          </div>
-          <div class="starRating">
-            <StarRating></StarRating>
-          </div>
-        </div>
-
-        <div class="review">
-          <div class="text convenience">
-            <h3>Rate the convenience</h3>
-            How easy was the bathroom to find? Factor in location the bathroom,
-            or other convenience factors such as ease of use of the facilities.
-          </div>
-          <div class="starRating">
-            <StarRating></StarRating>
-          </div>
-        </div>
-
-        <div class="review">
-          <div class="text amenities">
-            <h3>Rate the amenities</h3>
-            What was the supply of toilet paper and other amenities? Consider
-            the supplies of soap, seat coverings, feminine products (if
-            applicable).
-          </div>
-          <div class="starRating">
-            <StarRating></StarRating>
-          </div>
-        </div>
-      </box>
-
-      {/*<div>
-        <label> Bathroom:</label>
-        <input
-          placeholder="Bathroom..."
-          onChange={(event) => {
-            setBathroom(event.target.value);
-          }}
-        />
+      <div>
+        <h1>Write a review for {bathroomName}</h1>
       </div>
-       <div>
+      <div></div>
+      <div>
         <label> Overall:</label>
         <input
           placeholder="Overall Rating 1-5"
           onChange={(event) => {
-            setOverall(event.target.value);
             setOverall(event.target.value);
           }}
         />
@@ -240,19 +164,17 @@ function Review({ isAuth }) {
             setAmenities(event.target.value);
           }}
         />
-      </div> */}
+      </div>
       <div>
+        <label> Review:</label>
         <textarea
-          className="comment"
           placeholder="Review..."
           onChange={(event) => {
             setReviewText(event.target.value);
           }}
         />
       </div>
-      <button className="next" onClick={createReview}>
-        Next
-      </button>
+      <button onClick={createReview}>Submit Review</button>
     </div>
   );
 }
