@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import "./Home.scss";
 import ReactSlider from 'react-slider'
 
@@ -107,6 +107,10 @@ const ListingContainer = ( {isAuth} ) => {
                 <div className="selectValueNumber">5</div>
               </div>
           </div>
+        </div>
+        <div className="filter-component">
+          <div className="request-bathroom-title">Don't see your bathroom here?</div>
+          <Link className="request-bathroom-link" to="/add-bathroom">Request to add a bathroom</Link>
         </div>
       </div>
       <BathroomListings male={maleIsChecked} female={femaleIsChecked} neutral={neutralIsChecked} 
