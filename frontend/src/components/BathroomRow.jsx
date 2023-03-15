@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import './BathroomRow.scss'
 import { getDocs, updateDoc, collection, arrayRemove, setDoc, doc, arrayUnion, query, where } from 'firebase/firestore'
 import { db, auth } from '../firebase-config';
@@ -28,8 +28,19 @@ export default class BathroomRow extends Component {
         const targetUser = doc(db, "users", snapshot.docs[0].id)
         await updateDoc(targetUser, {likedBathrooms: arrayRemove(this.props.id)})
     }
-
     var favorited = false;
+    // console.log(this.props.fav_list)
+    if (this.props.fav_list) {
+        if ((this.props.fav_list).includes(this.props.id)) {
+            // console.log("this is inside the check")
+            // console.log(this.props.id)
+            favorited = true;
+            // let displayImage = document.getElementById(button_id)
+            // displayImage.src = filledHeart
+            // console.log(favorited)
+        }
+    }
+
     function whenClicked() {
         if (!localStorage.getItem("isAuth")) { 
             <link to ="/login"></link>
@@ -37,12 +48,12 @@ export default class BathroomRow extends Component {
         else {
             let displayImage = document.getElementById(button_id)
             if(!favorited) { 
-                favorited = true
+                favorited = true;
                 displayImage.src = filledHeart
                 addLikedBathroom()
             }
             else {
-                favorited = false
+                favorited = false;
                 displayImage.src = unfilledHeart
                 RemoveLikedBathroom()
             }
@@ -55,7 +66,6 @@ export default class BathroomRow extends Component {
         if (favorited == false) {
             event.target.src=filledHeart
         }        
-
     }
     const handleMouseOut = (event) => {
         if (favorited == false) {
@@ -106,7 +116,11 @@ export default class BathroomRow extends Component {
                 <img src='https://i.imgur.com/tqq4Q6I.png' onMouseOver= {handleMouseOver}onMouseOut= {handleMouseOut} alt='Unfilled Heart' class="profile"/>
                 </Link>
                 :
+                (!favorited ? 
                 <img id={button_id} src={unfilledHeart} onMouseOver= {handleMouseOver}onMouseOut= {handleMouseOut} onClick={() => {whenClicked()}} />
+                :                 <img id={button_id} src={filledHeart} onMouseOver= {handleMouseOver}onMouseOut= {handleMouseOut} onClick={() => {whenClicked()}} />
+                )
+
             }
 
         </div>
