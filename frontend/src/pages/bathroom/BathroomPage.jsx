@@ -4,10 +4,11 @@ import { db } from '../../firebase-config';
 import { doc } from 'firebase/firestore';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import './BathroomPage.scss'
 import BathroomPageRow from '../bathroom/BathroomPageRow'
+import Button from '../../components/Button';
 
 function word_split(word) {
 
@@ -48,7 +49,7 @@ function ReviewListings(reviewData) {
   </div>
 }
 
-function BathroomPage() {
+function BathroomPage(isAuth) {
     const [isLoading, setIsLoading] = useState(true);
     const [isLoading2, setIsLoading2] = useState(true);
     const [bathroomData, setBathroomData] = useState(null);
@@ -112,6 +113,9 @@ function BathroomPage() {
               <h3 className='name'>{word_split(bathroomData.name)[0]}</h3> 
               <h3 className='number'>{word_split(bathroomData.name)[1]}</h3>
               <div><img className='gender' src={getGenderIconURL(bathroomData.gender)} /></div>
+              <div className='add-review-button'>
+                <Link to={isAuth ? "/review?bathroom=" + bathroomId : "/login"}> <Button /> </Link>
+              </div>
 
               <p className='overall'>Overall                 {bathroomData.score_overall}</p>
               <div className='whitebox'></div>
