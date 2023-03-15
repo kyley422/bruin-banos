@@ -22,7 +22,7 @@ export default class Navbar extends Component {
 
         <SearchBar />
 
-        <Link to={this.props.isAuth ? "/review" : "/login"}> <Button /> </Link>
+        {/* <Link to={this.props.isAuth ? "/review" : "/login"}> <Button /> </Link> */}
 
         {!this.props.isAuth ? (
           <Link to="/login">

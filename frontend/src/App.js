@@ -40,7 +40,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home isAuth={isAuth}/>} />
           <Route path="/add-bathroom" element={<AddBathroom isAuth={isAuth}/>} />
-          <Route path="/bathroom/:bathroomId" element={<BathroomPage />} />
+          <Route path="/bathroom/:bathroomId" element={<BathroomPage isAuth={isAuth}/>} />
           <Route path="/login" element={<Login setIsAuth={setIsAuth}/>} />
           <Route path="/review" element={<Review isAuth={isAuth}/>} />
           <Route path="/user" element={<User isAuth={isAuth}/>} />
