@@ -9,14 +9,18 @@ function UserFavoriteListings(props) {
     
     useEffect(() => {
         const getUserFavorites = async () => {
-            const userCollectionRef = collection(db, "users")
-            const q = query(
-                userCollectionRef,
-                where("id", '==', auth.currentUser.uid)
-                );
-            const data = await getDoc(q);
-            setFavoriteList(data)
-            console.log("HI")
+            // const userCollectionRef = collection(db, "users")
+            // const q = query(userCollectionRef, where("id", '==', auth.currentUser.uid));
+            // const data = await getDoc(q);
+            // setFavoriteList(data)
+
+            const userRef = collection(db, "users")
+            const q = query(userRef, where('id', '==', auth.currentUser.uid))
+            const snapshot = await getDocs(q)
+            const targetUser = doc(db, "users", snapshot.docs[0].id)
+            const docsSnap = await getDoc(targetUser)
+            setFavoriteList(docsSnap.data().likedBathrooms)
+            console.log("peepee")
             console.log(favoriteList)
         }
         getUserFavorites()

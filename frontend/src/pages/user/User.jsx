@@ -45,7 +45,9 @@ const FavoriteListings = () => {
             <div className='favorites-text'>
                 <h3>Favorites</h3>
             </div>
-            
+            <div className='favorite-box'>
+            <UserFavoriteListings />
+            </div>
             {/* <div className='listing-container'>
                 <div className='favorites-list'>
                      <BathroomListings className='bathroom-listing'/>             
