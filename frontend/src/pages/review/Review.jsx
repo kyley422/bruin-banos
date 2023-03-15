@@ -3,8 +3,9 @@ import { addDoc, collection } from "firebase/firestore";
 import { db, auth } from "../../firebase-config";
 import { useNavigate } from "react-router-dom";
 
+import StarRating from "./StarRating";
+
 import "./Review.scss";
-import { Container } from "@mui/material";
 
 function Review({ isAuth }) {
   const [bathroom, setBathroom] = useState("");
@@ -60,6 +61,8 @@ function Review({ isAuth }) {
         <script src="starrr.min.js"></script>
       </head>
 
+      <StarRating></StarRating>
+
       <h1>Write a Review</h1>
 
       <box className="background-box-review">
@@ -70,11 +73,7 @@ function Review({ isAuth }) {
             stalls, and toilets.
           </div>
           <div class="starRating">
-            <i class="fa fa-regular fa-star"></i>
-            <i class="fa fa-regular fa-star"></i>
-            <i class="fa fa-regular fa-star"></i>
-            <i class="fa fa-regular fa-star"></i>
-            <i class="fa fa-regular fa-star"></i>
+            <StarRating></StarRating>
           </div>
         </div>
 
@@ -85,11 +84,7 @@ function Review({ isAuth }) {
             or the layout of the bathroom.
           </div>
           <div class="starRating">
-            <i class="fa fa-regular fa-star"></i>
-            <i class="fa fa-regular fa-star"></i>
-            <i class="fa fa-regular fa-star"></i>
-            <i class="fa fa-regular fa-star"></i>
-            <i class="fa fa-regular fa-star"></i>
+            <StarRating></StarRating>
           </div>
         </div>
 
@@ -100,11 +95,7 @@ function Review({ isAuth }) {
             or other convenience factors such as ease of use of the facilities.
           </div>
           <div class="starRating">
-            <i class="fa fa-regular fa-star"></i>
-            <i class="fa fa-regular fa-star"></i>
-            <i class="fa fa-regular fa-star"></i>
-            <i class="fa fa-regular fa-star"></i>
-            <i class="fa fa-regular fa-star"></i>
+            <StarRating></StarRating>
           </div>
         </div>
 
@@ -116,11 +107,7 @@ function Review({ isAuth }) {
             applicable).
           </div>
           <div class="starRating">
-            <i class="fa fa-regular fa-star"></i>
-            <i class="fa fa-regular fa-star"></i>
-            <i class="fa fa-regular fa-star"></i>
-            <i class="fa fa-regular fa-star"></i>
-            <i class="fa fa-regular fa-star"></i>
+            <StarRating></StarRating>
           </div>
         </div>
       </box>

@@ -14,6 +14,11 @@ i {
     padding: 5px;
     }
 
+input[type="radio"] {
+    display: none;
+}
+
+
 .starRating {
     width: 100%;
     padding-top: 30px;
