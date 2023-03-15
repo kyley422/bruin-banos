@@ -61,8 +61,6 @@ function Review({ isAuth }) {
         <script src="starrr.min.js"></script>
       </head>
 
-      <StarRating></StarRating>
-
       <h1>Write a Review</h1>
 
       <box className="background-box-review">
