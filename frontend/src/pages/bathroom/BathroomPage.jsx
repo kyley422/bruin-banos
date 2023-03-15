@@ -10,6 +10,14 @@ import './BathroomPage.scss'
 import BathroomPageRow from '../bathroom/BathroomPageRow'
 import Button from '../../components/Button';
 
+ function truncateDecimals(number, digits) {
+  var multiplier = Math.pow(10, digits),
+      adjustedNum = number * multiplier,
+      truncatedNum = Math[adjustedNum < 0 ? 'ceil' : 'floor'](adjustedNum);
+
+  return truncatedNum / multiplier;
+}
+
 function word_split(word) {
 
   for (let i = 0; i < word.length-1; i++) {
@@ -112,18 +120,25 @@ function BathroomPage(isAuth) {
               <div><img className="banner" src={bathroomData.image}/></div>
               <h3 className='name'>{word_split(bathroomData.name)[0]}</h3> 
               <h3 className='number'>{word_split(bathroomData.name)[1]}</h3>
-              <div><img className='gender' src={getGenderIconURL(bathroomData.gender)} /></div>
+
+              <div className='gender-box'>
+                <img className='gender' src={getGenderIconURL(bathroomData.gender)} />
+              </div>
               <div className='add-review-button'>
                 <Link to={isAuth ? "/review?bathroom=" + bathroomId : "/login"}> <Button /> </Link>
               </div>
 
-              <p className='overall'>Overall                 {bathroomData.score_overall}</p>
+              <div className='add-review-button'>
+                <Link to={isAuth ? "/review?bathroom=" + bathroomId : "/login"}> <Button /> </Link>
+              </div>
+
+              <p className='overall'>Overall                {truncateDecimals(bathroomData.score_overall,1)}</p>
               <div className='whitebox'></div>
 
-              <p className='cleanliness'>Cleanliness                  <strong>{bathroomData.score_cleanliness}</strong></p>
-              <p className='comfort'>Comfort                        <strong>{bathroomData.score_comfort}</strong></p>
-              <p className='convenience'>Convience                    <strong>{bathroomData.score_convenience}</strong></p>
-              <p className='ameneties'>Ameneties                    <strong>{bathroomData.score_amenities}</strong></p>
+              <p className='cleanliness'>Cleanliness                  <strong>{truncateDecimals(bathroomData.score_cleanliness,1)}</strong></p>
+              <p className='comfort'>Comfort                        <strong>{truncateDecimals(bathroomData.score_comfort,1)}</strong></p>
+              <p className='convenience'>Convience                    <strong>{truncateDecimals(bathroomData.score_convenience,1)}</strong></p>
+              <p className='ameneties'>Ameneties                    <strong>{truncateDecimals(bathroomData.score_amenities,1)}</strong></p>
             </div>
 
             {/* <div className='gradient'></div> */}
