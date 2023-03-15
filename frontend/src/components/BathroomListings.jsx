@@ -103,6 +103,17 @@ function BathroomListings(props) {
         // console.log(topReviewTexts)
     },[clear])
 
+    useEffect(() => {
+        function mapReviews() {
+            bathroomList.map((entry, index) => {
+                entry.topReviewText = topReviewTexts[index]
+            })
+        }
+        mapReviews();
+        console.log(bathroomList);
+    }, [topReviewTexts])
+    
+
     if (bathroomList.length === 0) {
         return <div className='bathroom-listings-not-found'>No results found. Try expanding your search.</div>
     }
@@ -126,7 +137,7 @@ function BathroomListings(props) {
                 score_comfort={entry.score_comfort}
                 score_convenience={entry.score_convenience}
                 score_amenities={entry.score_amenities}
-                top_review={topReviewTexts[index]}
+                top_review={entry.topReviewText}
                 fav_list={favoritedBathrooms}
             />
             // console.log(entry.reviews[0])
