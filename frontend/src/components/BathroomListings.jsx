@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from 'react'
 import {doc, getDoc, get, getDocs, collection} from 'firebase/firestore' 
-import { db } from '../firebase-config';
+import { db, auth } from '../firebase-config';
 import { query, where, orderBy } from "firebase/firestore";
 
 import BathroomRow from '../components/BathroomRow'
@@ -35,6 +35,7 @@ function getSortParam(param) {
 function BathroomListings(props) {
     const [bathroomList, setBathroomList] = useState([])
     const [topReviewTexts, setTopReviewTexts] = useState([])
+    const [favoritedBathrooms, setFavoritedBathrooms] = useState([])
     const [clear, setClear] = useState(false)
 
     useEffect(() => {
@@ -43,6 +44,8 @@ function BathroomListings(props) {
             const bathroomCollectionRef = collection(db,"bathroom")
             const q = query(
                 bathroomCollectionRef, 
+                where(getSortParam(props.sortParam), "<=", props.upperLimit),
+                where(getSortParam(props.sortParam), ">=", props.lowerLimit),
                 where("gender", 'in', [props.male ? 'male' : null, props.female ? 'female' : null, props.neutral ? 'neutral' : null]),
                 orderBy(getSortParam(props.sortParam), "desc")
                 );
@@ -52,6 +55,22 @@ function BathroomListings(props) {
         }
         getPosts()
     },[db, props])
+
+    useEffect(() => {
+        const getFavorites = async () => {
+            if (localStorage.getItem("isAuth")) { 
+                const userRef = collection(db, "users");
+                const q = query(userRef, where('id', '==', auth.currentUser.uid))
+                const snapshot = await getDocs(q)
+                const targetUser = doc(db, "users", snapshot.docs[0].id)
+                const docsSnap = await getDoc(targetUser)
+                setFavoritedBathrooms(docsSnap.data().likedBathrooms)
+            }
+            else {
+            }
+        }
+        getFavorites()
+    },[bathroomList])
 
     useEffect(() => {
         setTopReviewTexts([])
@@ -84,11 +103,23 @@ function BathroomListings(props) {
         // console.log(topReviewTexts)
     },[clear])
 
+    useEffect(() => {
+        function mapReviews() {
+            bathroomList.map((entry, index) => {
+                entry.topReviewText = topReviewTexts[index]
+            })
+        }
+        mapReviews();
+        console.log(bathroomList);
+    }, [topReviewTexts])
+    
+
     if (bathroomList.length === 0) {
         return <div className='bathroom-listings-not-found'>No results found. Try expanding your search.</div>
     }
 
     return <div className='bathroom-listings'>
+
 
     {bathroomList
         // Filter based on search box (case-insensitive)
@@ -101,12 +132,13 @@ function BathroomListings(props) {
                 image={entry.image} 
                 genderImageURL={getGenderIconURL(entry.gender)}
                 total_ratings={entry.total_ratings}
-                score_overall={entry.score_overall}
-                score_cleanliness={entry.score_cleanliness}
-                score_comfort={entry.score_comfort}
-                score_convenience={entry.score_convenience}
-                score_amenities={entry.score_amenities}
-                top_review={topReviewTexts[index]}
+                score_overall={Math.round(entry.score_overall * 10) / 10}
+                score_cleanliness={Math.round(entry.score_cleanliness * 10) / 10}
+                score_comfort={Math.round(entry.score_comfort * 10) / 10}
+                score_convenience={Math.round(entry.score_convenience * 10) / 10}
+                score_amenities={Math.round(entry.score_amenities * 10) / 10}
+                top_review={entry.topReviewText}
+                fav_list={favoritedBathrooms}
             />
             // console.log(entry.reviews[0])
             return current_bathroom_row

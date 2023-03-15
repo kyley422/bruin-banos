@@ -1,0 +1,84 @@
+.form-container {
+  background-color: #fcfcfc;
+  border-radius: 15px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+  margin: 0;
+  position: absolute;
+  width: 900px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  align-items: center;
+  margin: auto;
+  .title {
+    // border: 5px solid red;
+    margin-top: 5px;
+    margin-left: 75px;
+    display: flex;
+    .h1-emphasis {
+      color: #2774ae;
+    }
+  }
+  .input-container {
+    // border: 5px solid red;
+    width: 900px;
+    display: flex;
+    .input-info {
+      color: gray;
+    }
+    .input-container-building {
+      //border: 5px solid red;
+      position: absolute;
+      margin-left: 75px;
+      input {
+        // border: 5px solid red;
+        margin-left: 0px;
+        width: 700px;
+      }
+    }
+    .input-container-image {
+      position: absolute;
+      margin-top: 75px;
+      margin-left: 75px;
+      input {
+        margin-left: 0px;
+      }
+    }
+    .input-container-gender {
+      position: absolute;
+      margin-top: 75px;
+      margin-left: 540px;
+      input {
+        margin-left: 0px;
+        width: 235px;
+      }
+    }
+  }
+  .button-container {
+    // border: 5px solid red;
+    width: 180px;
+    margin: auto;
+    margin-top: 140px;
+  }
+}
+
+.user-not-authorized {
+  .title {
+    // border: 5px solid red;
+    width: 500px;
+    margin: auto;
+    display: flex;
+    .h1-emphasis {
+      color: #2774ae;
+    }
+  }
+  .google-form-container {
+    background-color: #fcfcfc;
+    border-radius: 15px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+    width: 640px;
+    margin: auto;
+  }
+}

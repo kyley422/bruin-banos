@@ -52,7 +52,6 @@ body {
     // border-style: solid;
     
     display: flex;
-    height: 1000px;
     width: 1065px;
     margin: auto;
     padding-top: 10px;
@@ -120,18 +119,64 @@ body {
             margin-bottom: 20px;
         }
         .slider {
-            input {
-                padding: 0px;
+            // input {
+            //     padding: 0px;
+            //     margin: auto;
+            //     width: 82%;
+            // }
+            .horizontal-slider {
+                // border-style: solid;
                 margin: auto;
-                width: 82%;
+                width: 87%;
+                height: 20px;
+                .example-track{
+                    top: 5px;
+                    height: 10px;
+                    border-radius: 20px;
+                }
+                .example-track-0 {
+                    background: #ADADAD;
+                }
+                .example-track-1 {
+                    background: #0578eb;
+                }
+                .example-track-2 {
+                    margin-left: 15px;
+                    background: #ADADAD;
+                }
+                .example-thumb-0 {
+                    top: 1px;
+                    // margin-left: -5px;
+                    width: 15px;
+                    height: 15px;
+                    background: #ffffff;
+                    border: 5px solid #0578eb;
+                    border-width: 3px;
+                    border-radius: 100px;
+                    font-size: 0px;
+                }
+                .example-thumb-1 {
+                    top: 1px;
+                    // margin-left: 8px;
+                    width: 15px;
+                    height: 15px;
+                    background: #ffffff;
+                    border: 5px solid #0578eb;
+                    border-width: 3px;
+                    border-radius: 100px;
+                    font-size: 0px;
+                }
             }
+
+            
             .selectValue {
                 // border-style: solid;
                 // border-color: green;
+                margin: auto;
                 display: table;
                 width: 100%;
                 table-layout: fixed;
-                margin-top: -12px;
+                margin-top: 0px;
                 .selectValueNumber {
                     // border-style: solid;
                     // border-color: green;
@@ -140,6 +185,15 @@ body {
                     color: #6D6D6D;
                 }
             }
+        }
+        .request-bathroom-title {
+            margin-top: 15px;
+            color: gray;
+            font-size: 14px;
+        }
+        .request-bathroom-link {
+            color: gray;
+            font-size: 14px;
         }
     }
     .bathroom-listings {

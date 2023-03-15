@@ -19,7 +19,11 @@
   display: flex;
 
   a:link {
+    color: black;
     text-decoration: none;
+  }
+  a:visited {
+    color: black;
   }
   a:hover {
     color: #2774ae;
