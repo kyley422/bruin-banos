@@ -23,7 +23,7 @@ body {
   .name {
     position: absolute;
     top: 100px;
-    left: 350px;
+    left: 250px;
   
     color: white;
     font-size: 50px;
@@ -33,11 +33,9 @@ body {
   .number {
     position: absolute;
     top: 170px;
-<<<<<<< Updated upstream
-    left: 350px;
-=======
+
     left: 245px;
->>>>>>> Stashed changes
+
   
     color: rgb(200, 200, 200);
     font-size: 50px;
@@ -53,14 +51,15 @@ body {
     font-weight: bold;
     font-size: 24px;
     top: 300px;
-<<<<<<< Updated upstream
-    left: 350px;
+
+    left: 250px;
+
     width: 20px;
     height:auto;
     object-fit: contain;
   }
 
-=======
+
     left: 245px;
 
     .gender {
@@ -87,6 +86,7 @@ body {
   //   object-fit: contain;
   // }
 
+
   .add-review-button {
     // border: 5px solid red;
     position: absolute;
@@ -96,12 +96,13 @@ body {
     left: 225px;
   }
 
->>>>>>> Stashed changes
+
+
   .overall {
     position: absolute;
     align-content: space-evenly;
     top: 120px;
-    left: 1050px;
+    left: 975px;
     width: 315px;
     height: 40px;
     background-color: #D9D9D9;
@@ -120,9 +121,9 @@ body {
     position: absolute;
 
     top: 210px;
-    left: 1050px;
+    left: 975px;
     width: 315px;
-    height: 300px;
+    height: 250px;
     background-color: #eae9e9;
     opacity: 0.8;
 
@@ -133,7 +134,7 @@ body {
     position: absolute;
     align-content: space-evenly;
     top: 200px;
-    left: 1065px;
+    left: 990px;
     
     font-style: normal;
     font-weight: 400;
@@ -145,7 +146,7 @@ body {
     position: absolute;
     align-content: space-evenly;
     top: 260px;
-    left: 1065px;
+    left: 990px;
 
     font-style: normal;
     font-weight: 400;
@@ -157,7 +158,7 @@ body {
     position: absolute;
     align-content: space-evenly;
     top: 320px;
-    left: 1065px;
+    left: 990px;
 
     font-style: normal;
     font-weight: 400;
@@ -169,7 +170,7 @@ body {
     position: absolute;
     align-content: space-evenly;
     top: 380px;
-    left: 1065px;
+    left: 990px;
 
     font-style: normal;
     font-weight: 400;
@@ -182,7 +183,7 @@ body {
 .bathroompage-row {
   border-radius: 15px;
   margin-top: 30px;
-  margin-left: 350px;
+  margin-left: 240px;
   margin-bottom: 120px;
   background-color: #fcfcfc;
   max-width: 200px;

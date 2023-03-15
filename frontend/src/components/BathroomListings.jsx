@@ -44,6 +44,8 @@ function BathroomListings(props) {
             const bathroomCollectionRef = collection(db,"bathroom")
             const q = query(
                 bathroomCollectionRef, 
+                where(getSortParam(props.sortParam), "<=", props.upperLimit),
+                where(getSortParam(props.sortParam), ">=", props.lowerLimit),
                 where("gender", 'in', [props.male ? 'male' : null, props.female ? 'female' : null, props.neutral ? 'neutral' : null]),
                 orderBy(getSortParam(props.sortParam), "desc")
                 );
@@ -56,7 +58,6 @@ function BathroomListings(props) {
 
     useEffect(() => {
         const getFavorites = async () => {
-            console.log("made it here yipee!")
             if (localStorage.getItem("isAuth")) { 
                 const userRef = collection(db, "users");
                 const q = query(userRef, where('id', '==', auth.currentUser.uid))
@@ -64,14 +65,12 @@ function BathroomListings(props) {
                 const targetUser = doc(db, "users", snapshot.docs[0].id)
                 const docsSnap = await getDoc(targetUser)
                 setFavoritedBathrooms(docsSnap.data().likedBathrooms)
-                console.log("made it here yipee 2!")
-
             }
             else {
             }
         }
         getFavorites()
-    },[db, props])
+    },[bathroomList])
 
     useEffect(() => {
         setTopReviewTexts([])
@@ -104,6 +103,17 @@ function BathroomListings(props) {
         // console.log(topReviewTexts)
     },[clear])
 
+    useEffect(() => {
+        function mapReviews() {
+            bathroomList.map((entry, index) => {
+                entry.topReviewText = topReviewTexts[index]
+            })
+        }
+        mapReviews();
+        console.log(bathroomList);
+    }, [topReviewTexts])
+    
+
     if (bathroomList.length === 0) {
         return <div className='bathroom-listings-not-found'>No results found. Try expanding your search.</div>
     }
@@ -122,12 +132,12 @@ function BathroomListings(props) {
                 image={entry.image} 
                 genderImageURL={getGenderIconURL(entry.gender)}
                 total_ratings={entry.total_ratings}
-                score_overall={entry.score_overall}
-                score_cleanliness={entry.score_cleanliness}
-                score_comfort={entry.score_comfort}
-                score_convenience={entry.score_convenience}
-                score_amenities={entry.score_amenities}
-                top_review={topReviewTexts[index]}
+                score_overall={Math.round(entry.score_overall * 10) / 10}
+                score_cleanliness={Math.round(entry.score_cleanliness * 10) / 10}
+                score_comfort={Math.round(entry.score_comfort * 10) / 10}
+                score_convenience={Math.round(entry.score_convenience * 10) / 10}
+                score_amenities={Math.round(entry.score_amenities * 10) / 10}
+                top_review={entry.topReviewText}
                 fav_list={favoritedBathrooms}
             />
             // console.log(entry.reviews[0])

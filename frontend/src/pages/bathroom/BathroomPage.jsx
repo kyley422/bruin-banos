@@ -4,10 +4,11 @@ import { db } from '../../firebase-config';
 import { doc } from 'firebase/firestore';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import './BathroomPage.scss'
 import BathroomPageRow from '../bathroom/BathroomPageRow'
+import Button from '../../components/Button';
 
  function truncateDecimals(number, digits) {
   var multiplier = Math.pow(10, digits),
@@ -41,7 +42,7 @@ function getGenderIconURL(gender) {
 
 function ReviewListings(reviewData) {
   return <div className='reviewListing'>
-  {console.log(reviewData.reviewData)}
+  {/* {console.log(reviewData.reviewData)} */}
   {reviewData.reviewData.map((item, index) => {
     return <div key={index}>
       {item.author.name}:
@@ -56,7 +57,7 @@ function ReviewListings(reviewData) {
   </div>
 }
 
-function BathroomPage() {
+function BathroomPage(isAuth) {
     const [isLoading, setIsLoading] = useState(true);
     const [isLoading2, setIsLoading2] = useState(true);
     const [bathroomData, setBathroomData] = useState(null);
@@ -70,7 +71,7 @@ function BathroomPage() {
     useEffect(() => {
         const getData = async () => {
             const data = await getDoc(docRef)
-            console.log(data)
+            // console.log(data)
             if (!data.exists()) {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
@@ -119,16 +120,17 @@ function BathroomPage() {
               <div><img className="banner" src={bathroomData.image}/></div>
               <h3 className='name'>{word_split(bathroomData.name)[0]}</h3> 
               <h3 className='number'>{word_split(bathroomData.name)[1]}</h3>
-<<<<<<< Updated upstream
-              <div><img className='gender' src={getGenderIconURL(bathroomData.gender)} /></div>
-=======
+
               <div className='gender-box'>
                 <img className='gender' src={getGenderIconURL(bathroomData.gender)} />
               </div>
               <div className='add-review-button'>
                 <Link to={isAuth ? "/review?bathroom=" + bathroomId : "/login"}> <Button /> </Link>
               </div>
->>>>>>> Stashed changes
+
+              <div className='add-review-button'>
+                <Link to={isAuth ? "/review?bathroom=" + bathroomId : "/login"}> <Button /> </Link>
+              </div>
 
               <p className='overall'>Overall                {truncateDecimals(bathroomData.score_overall,1)}</p>
               <div className='whitebox'></div>
