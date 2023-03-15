@@ -13,6 +13,9 @@ import {
 import { db, auth } from "../../firebase-config";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
+import StarRating from "./StarRating";
+import "./Review.scss";
+
 function Review({ isAuth }) {
   const [bathroom, setBathroom] = useState("");
   const [reviewText, setReviewText] = useState("");
@@ -118,63 +121,76 @@ function Review({ isAuth }) {
     <div>
       <div>
         <h1>Write a review for {bathroomName}</h1>
+        <head>
+          <link
+            href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+            rel="stylesheet"
+          ></link>
+          <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+          <script src="starrr.min.js"></script>
+        </head>
+
+        <box className="background-box-review">
+          <div class="review">
+            <div class="text cleanliness">
+              <h3>Rate the cleanliness</h3>
+              How clean was your experience? Consider the sinks, floor, walls,
+              stalls, and toilets.
+            </div>
+            <div class="starRating">
+              <StarRating></StarRating>
+            </div>
+          </div>
+
+          <div class="review">
+            <div class="text comfort">
+              <h3>Rate the comfort</h3>
+              How comfortable did the bathroom seem? Consider lighting, seating,
+              or the layout of the bathroom.
+            </div>
+            <div class="starRating">
+              <StarRating></StarRating>
+            </div>
+          </div>
+
+          <div class="review">
+            <div class="text convenience">
+              <h3>Rate the convenience</h3>
+              How easy was the bathroom to find? Factor in location the
+              bathroom, or other convenience factors such as ease of use of the
+              facilities.
+            </div>
+            <div class="starRating">
+              <StarRating></StarRating>
+            </div>
+          </div>
+
+          <div class="review">
+            <div class="text amenities">
+              <h3>Rate the amenities</h3>
+              What was the supply of toilet paper and other amenities? Consider
+              the supplies of soap, seat coverings, feminine products (if
+              applicable).
+            </div>
+            <div class="starRating">
+              <StarRating></StarRating>
+            </div>
+          </div>
+        </box>
+
+        <div>
+          <textarea
+            className="comment"
+            placeholder="Review..."
+            onChange={(event) => {
+              setReviewText(event.target.value);
+            }}
+          />
+        </div>
+        <button className="next" onClick={createReview}>
+          Submit
+        </button>
       </div>
-      <div></div>
-      <div>
-        <label> Overall:</label>
-        <input
-          placeholder="Overall Rating 1-5"
-          onChange={(event) => {
-            setOverall(event.target.value);
-          }}
-        />
-      </div>
-      <div>
-        <label> Cleanliness:</label>
-        <input
-          placeholder="Cleanliness Rating 1-5"
-          onChange={(event) => {
-            setCleanliness(event.target.value);
-          }}
-        />
-      </div>
-      <div>
-        <label> Comfort:</label>
-        <input
-          placeholder="Comfort Rating 1-5"
-          onChange={(event) => {
-            setComfort(event.target.value);
-          }}
-        />
-      </div>
-      <div>
-        <label> Convenience:</label>
-        <input
-          placeholder="Convenience Rating 1-5"
-          onChange={(event) => {
-            setConvenience(event.target.value);
-          }}
-        />
-      </div>
-      <div>
-        <label> Amenities:</label>
-        <input
-          placeholder="Amenities Rating 1-5"
-          onChange={(event) => {
-            setAmenities(event.target.value);
-          }}
-        />
-      </div>
-      <div>
-        <label> Review:</label>
-        <textarea
-          placeholder="Review..."
-          onChange={(event) => {
-            setReviewText(event.target.value);
-          }}
-        />
-      </div>
-      <button onClick={createReview}>Submit Review</button>
     </div>
   );
 }
