@@ -29,32 +29,46 @@ import UserReviewsListings from './UserReviewsListings';
 const Welcome = () => {
 
     var firstName = (localStorage.getItem("name").split(" "))[0];
-    console.log(firstName);
+    // console.log(firstName);
     return (
         <div className='welcome'> 
-            <h1>Welcome Back, {firstName}</h1>
+            <div className='welcome-text'>
+                <h1>Welcome Back, {firstName}</h1>
+            </div>
         </div>
     )
 }
 
-const Favorites = () => {
+const FavoriteListings = () => {
     return (
         <div className='favorites'>
             <div className='favorites-text'>
                 <h3>Favorites</h3>
             </div>
-            <div className='listing-container'>
+            
+            {/* <div className='listing-container'>
                 <div className='favorites-list'>
-                    <BathroomListings className='bathroom-listing'/>            
+                     <BathroomListings className='bathroom-listing'/>             
                 </div>
                 <div className='filter-container'>
                     Filters
-                </div>
-            </div>
+                </div> */}
         </div>
+
     )
 }
 
+const ReviewListings = () => {
+    return (
+        <div className='reviews'>
+            <div className='reviews-text'>
+                <h3>Reviews</h3>
+            </div>
+            <div className='review-box'></div>
+            <UserReviewsListings />
+        </div>
+    )
+}
 // const ListingContainer = () => {
 //     return (
 //       <div className='listing-container'>
@@ -72,8 +86,8 @@ export default class UserPage extends Component {
       <div className='user-page'>
         <Welcome />
         {/* <ListingContainer /> */}
-        <Favorites />
-        <UserReviewsListings></UserReviewsListings>
+        <FavoriteListings />
+        <ReviewListings />
         {/* <UserFavoriteListings></UserFavoriteListings> */}
 
       </div>
