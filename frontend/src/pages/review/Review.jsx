@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { addDoc, getDocs, collection, getDoc, setDoc, doc, arrayUnion, query, where } from 'firebase/firestore'
 import { db, auth } from '../../firebase-config';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 function Review( {isAuth} ) {
   const [bathroom, setBathroom] = useState("");
@@ -11,6 +11,9 @@ function Review( {isAuth} ) {
   const [comfort, setComfort] = useState("");
   const [convenience, setConvenience] = useState("");
   const [amenities, setAmenities] = useState("");
+
+  const [searchParams] = useSearchParams();
+  var bathroomID = searchParams.get('bathroom') ? searchParams.get('bathroom') : "";
 
   // "reviews" is name of collection in Firebase
   const reviewsCollectionRef = collection(db, "reviews");

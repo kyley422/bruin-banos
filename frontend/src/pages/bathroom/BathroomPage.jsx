@@ -114,7 +114,7 @@ function BathroomPage(isAuth) {
               <h3 className='number'>{word_split(bathroomData.name)[1]}</h3>
               <div><img className='gender' src={getGenderIconURL(bathroomData.gender)} /></div>
               <div className='add-review-button'>
-                <Link to={isAuth ? "/review" : "/login"}> <Button /> </Link>
+                <Link to={isAuth ? "/review?bathroom=" + bathroomId : "/login"}> <Button /> </Link>
               </div>
 
               <p className='overall'>Overall                 {bathroomData.score_overall}</p>
