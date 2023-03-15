@@ -119,7 +119,16 @@ function BathroomPage() {
               <div><img className="banner" src={bathroomData.image}/></div>
               <h3 className='name'>{word_split(bathroomData.name)[0]}</h3> 
               <h3 className='number'>{word_split(bathroomData.name)[1]}</h3>
+<<<<<<< Updated upstream
               <div><img className='gender' src={getGenderIconURL(bathroomData.gender)} /></div>
+=======
+              <div className='gender-box'>
+                <img className='gender' src={getGenderIconURL(bathroomData.gender)} />
+              </div>
+              <div className='add-review-button'>
+                <Link to={isAuth ? "/review?bathroom=" + bathroomId : "/login"}> <Button /> </Link>
+              </div>
+>>>>>>> Stashed changes
 
               <p className='overall'>Overall                {truncateDecimals(bathroomData.score_overall,1)}</p>
               <div className='whitebox'></div>

@@ -33,22 +33,70 @@ body {
   .number {
     position: absolute;
     top: 170px;
+<<<<<<< Updated upstream
     left: 350px;
+=======
+    left: 245px;
+>>>>>>> Stashed changes
   
     color: rgb(200, 200, 200);
     font-size: 50px;
     font-weight: 700;
   }
 
-  .gender {
+  .gender-box {
+    // border-style: solid;
+    // border-color: red;
     position: absolute;
+    height: 50px;
+    display: flex;
+    font-weight: bold;
+    font-size: 24px;
     top: 300px;
+<<<<<<< Updated upstream
     left: 350px;
     width: 20px;
     height:auto;
     object-fit: contain;
   }
 
+=======
+    left: 245px;
+
+    .gender {
+      // border-style: solid;
+      // border-color: red;
+      position: relative;
+
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+
+
+  // .gender {
+  //   position: absolute;
+  //   top: 300px;
+  //   left: 250px;
+  //   width: 20px;
+  //   height:auto;
+  //   object-fit: contain;
+  // }
+
+  .add-review-button {
+    // border: 5px solid red;
+    position: absolute;
+    height: 30px;
+    width: 130px;
+    top: 375px;
+    left: 225px;
+  }
+
+>>>>>>> Stashed changes
   .overall {
     position: absolute;
     align-content: space-evenly;
