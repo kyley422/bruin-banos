@@ -120,7 +120,14 @@ function BathroomPage(isAuth) {
               <div><img className="banner" src={bathroomData.image}/></div>
               <h3 className='name'>{word_split(bathroomData.name)[0]}</h3> 
               <h3 className='number'>{word_split(bathroomData.name)[1]}</h3>
-              <div><img className='gender' src={getGenderIconURL(bathroomData.gender)} /></div>
+
+              <div className='gender-box'>
+                <img className='gender' src={getGenderIconURL(bathroomData.gender)} />
+              </div>
+              <div className='add-review-button'>
+                <Link to={isAuth ? "/review?bathroom=" + bathroomId : "/login"}> <Button /> </Link>
+              </div>
+
               <div className='add-review-button'>
                 <Link to={isAuth ? "/review?bathroom=" + bathroomId : "/login"}> <Button /> </Link>
               </div>
