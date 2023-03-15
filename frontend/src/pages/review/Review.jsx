@@ -176,20 +176,21 @@ function Review({ isAuth }) {
               <StarRating></StarRating>
             </div>
           </div>
-        </box>
 
-        <div>
+          <div class="commentYourThoughts">
+            <h3>Comment your thoughts</h3>
+          </div>
           <textarea
-            className="comment"
-            placeholder="Review..."
+            class="comment"
+            placeholder=" Write your review here..."
             onChange={(event) => {
               setReviewText(event.target.value);
             }}
           />
+        </box>
+        <div class="next">
+          <button onClick={createReview}>Submit</button>
         </div>
-        <button className="next" onClick={createReview}>
-          Submit
-        </button>
       </div>
     </div>
   );
