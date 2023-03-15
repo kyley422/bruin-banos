@@ -52,7 +52,6 @@ body {
     // border-style: solid;
     
     display: flex;
-    height: 1000px;
     width: 1065px;
     margin: auto;
     padding-top: 10px;
@@ -186,6 +185,15 @@ body {
                     color: #6D6D6D;
                 }
             }
+        }
+        .request-bathroom-title {
+            margin-top: 15px;
+            color: gray;
+            font-size: 14px;
+        }
+        .request-bathroom-link {
+            color: gray;
+            font-size: 14px;
         }
     }
     .bathroom-listings {
