@@ -14,6 +14,7 @@ import { db, auth } from "../../firebase-config";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 import StarRating from "./StarRating";
+import { FaStar } from "react-icons/fa";
 import "./Review.scss";
 
 function Review({ isAuth }) {
