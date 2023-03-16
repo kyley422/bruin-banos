@@ -59,44 +59,80 @@ function AddBathroom({ isAuth }) {
     email == "hli25@g.ucla.edu"
   ) {
     return (
-      <div className="form-container">
-        <div>
-          <h1>Add a bathroom</h1>
+      <div className="admin-view">
+        <div className="form-container">
+          <div className="title">
+            <h1>Add a </h1>
+            <h1 className="h1-emphasis">&nbsp;new bathroom</h1>
+          </div>
+          <div className="input-container">
+            <div className="input-container-building">
+              <div className="input-info">
+                <label>Building Name and Number (eg. Boelter 2285)</label>
+              </div>
+              <div className="input-container-building-input">
+                <input
+                  placeholder="Building Name and Number"
+                  onChange={(event) => {
+                    setName(event.target.value);
+                  }}
+                />
+              </div>
+            </div>
+            <div className="input-container-image">
+              <div className="input-info">
+                <label>Image</label>
+              </div>
+              <div className="input-container-image-input">
+                <input
+                  placeholder="Valid image URL"
+                  onChange={(event) => {
+                    setImageURL(event.target.value);
+                  }}
+                />
+              </div>
+            </div>
+            <div>
+              <div className="input-container-gender">
+                <div className="input-info">
+                  <label>Gender</label>
+                </div>
+                <div className="input-container-gender-input">
+                  <input
+                    placeholder="Male/Female/Neutral"
+                    onChange={(event) => {
+                      setGender(event.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="button-container">
+            <button onClick={createBathroom}>Create</button>
+          </div>
         </div>
-        <div>
-          <label> Bathroom Name:</label>
-          <input
-            placeholder="[Building Name] [Number]"
-            onChange={(event) => {
-              setName(event.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <label> Gender:</label>
-          <input
-            placeholder="male/female/neutral"
-            onChange={(event) => {
-              setGender(event.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <label> Image URL:</label>
-          <input
-            placeholder=""
-            onChange={(event) => {
-              setImageURL(event.target.value);
-            }}
-          />
-        </div>
-        <button onClick={createBathroom}>Create Bathroom</button>
       </div>
     );
   } else {
     return (
       <div className="user-not-authorized">
-        You are not authorized to view this page.
+        <div className="title">
+          <h1>Request to add a </h1>
+          <h1 className="h1-emphasis">&nbsp;new bathroom</h1>
+        </div>
+        <div className="google-form-container">
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdURYPOYdyq2orsZjDEIgSEmpTOtXKkjpWKG7rQi7yeIpxKpw/viewform?embedded=true"
+            width="640"
+            height="704"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+          >
+            Loading…
+          </iframe>
+        </div>
       </div>
     );
   }

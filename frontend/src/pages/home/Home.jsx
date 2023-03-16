@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import "./Home.scss";
 import ReactSlider from 'react-slider'
 
@@ -33,7 +33,7 @@ const ListingContainer = ( {isAuth} ) => {
   const [neutralIsChecked, setNeutralIsChecked] = useState(true);
   const [sortParam, setSortParam] = useState("Overall");
   const [upperLimit, setUpperLimit] = useState(5);
-  const [lowerLimit, setLowerLimit] = useState(1);
+  const [lowerLimit, setLowerLimit] = useState(0);
   const [searchParams] = useSearchParams();
   var searchText = searchParams.get('search') ? searchParams.get('search') : "";
 
@@ -47,8 +47,13 @@ const ListingContainer = ( {isAuth} ) => {
     setNeutralIsChecked(!neutralIsChecked)
   }
   function sliderHandleOnChange(values) {
+    if (parseInt(values[0]) == 1) {
+      setLowerLimit(0)
+    }
+    else {
+      setLowerLimit(parseInt(values[0]));
+    }
     setUpperLimit(parseInt(values[1]));
-    setLowerLimit(parseInt(values[0]));
   }
 
   return (
@@ -107,6 +112,10 @@ const ListingContainer = ( {isAuth} ) => {
                 <div className="selectValueNumber">5</div>
               </div>
           </div>
+        </div>
+        <div className="filter-component">
+          <div className="request-bathroom-title">Don't see your bathroom here?</div>
+          <Link className="request-bathroom-link" to="/add-bathroom">Request to add a bathroom</Link>
         </div>
       </div>
       <BathroomListings male={maleIsChecked} female={femaleIsChecked} neutral={neutralIsChecked} 
