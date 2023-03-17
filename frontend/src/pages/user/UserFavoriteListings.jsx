@@ -3,7 +3,7 @@ import {doc, getDoc, get, getDocs, collection} from 'firebase/firestore'
 import { db } from '../../firebase-config';
 import { query, where, orderBy } from "firebase/firestore";
 import { auth } from '../../firebase-config';
-import BathroomRow from "../../components/BathroomRow"
+import BathroomRow from "./UserBathroomRow"
 
 
 function getGenderIconURL(gender) {

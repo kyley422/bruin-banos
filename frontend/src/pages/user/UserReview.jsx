@@ -12,7 +12,9 @@ export default class Review extends Component {
             OVERALL <strong>{this.props.overall}</strong> | CLEANLINESS <strong>{this.props.cleanliness}</strong> | COMFORT <strong>{this.props.comfort}</strong> | CONVENIENCE <strong>{this.props.convenience}</strong> | AMENITIES <strong>{this.props.amenities}</strong>
           </div>
           <div className='user-review-text'>
-            { console.log(this.props.reviewText) }
+            { 
+            console.log("ReviewText:")}
+           { console.log(this.props.reviewText) }
             {this.props.reviewText}
           </div>
       </div>

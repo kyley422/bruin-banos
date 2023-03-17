@@ -110,7 +110,7 @@ function BathroomListings(props) {
             })
         }
         mapReviews();
-        console.log(bathroomList);
+        // console.log(bathroomList);
     }, [topReviewTexts])
     
 
