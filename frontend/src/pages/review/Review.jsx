@@ -192,11 +192,11 @@ function Review({ isAuth }) {
           </div>
 
           <div class="commentYourThoughts">
-            <h3>Comment your thoughts</h3>
+            <h4>Comment your thoughts!</h4>
           </div>
           <textarea
             class="comment"
-            placeholder=" Write your review here..."
+            placeholder="Write your review here..."
             onChange={(event) => {
               setReviewText(event.target.value);
             }}
