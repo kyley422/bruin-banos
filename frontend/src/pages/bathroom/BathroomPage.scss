@@ -17,13 +17,13 @@ body {
     height: 500px;
     object-fit: cover;
 
-    filter: brightness(70%);
+    filter: brightness(80%);
   }
 
   .name {
     position: absolute;
     top: 100px;
-    left: 250px;
+    left: 315px;
   
     color: white;
     font-size: 50px;
@@ -34,7 +34,7 @@ body {
     position: absolute;
     top: 170px;
 
-    left: 245px;
+    left: 315px;
 
   
     color: rgb(200, 200, 200);
@@ -49,7 +49,7 @@ body {
     height: 50px;
     display: flex;
     top: 300px;
-    left: 250px;
+    left: 320px;
 
     width: 20px;
     object-fit: contain;
@@ -86,7 +86,7 @@ body {
     height: 30px;
     width: 130px;
     top: 375px;
-    left: 225px;
+    left: 295px;
   }
 
 
@@ -95,7 +95,7 @@ body {
     position: absolute;
     align-content: space-evenly;
     top: 120px;
-    left: 975px;
+    left: 1045px;
     width: 315px;
     height: 40px;
     background-color: #D9D9D9;
@@ -114,7 +114,7 @@ body {
     position: absolute;
 
     top: 210px;
-    left: 975px;
+    left: 1045px;
     width: 315px;
     height: 250px;
     background-color: #eae9e9;
@@ -127,7 +127,7 @@ body {
     position: absolute;
     align-content: space-evenly;
     top: 200px;
-    left: 990px;
+    left: 1060px;
     
     font-style: normal;
     font-weight: 400;
@@ -139,7 +139,7 @@ body {
     position: absolute;
     align-content: space-evenly;
     top: 260px;
-    left: 990px;
+    left: 1060px;
 
     font-style: normal;
     font-weight: 400;
@@ -151,7 +151,7 @@ body {
     position: absolute;
     align-content: space-evenly;
     top: 320px;
-    left: 990px;
+    left: 1060px;
 
     font-style: normal;
     font-weight: 400;
@@ -163,7 +163,7 @@ body {
     position: absolute;
     align-content: space-evenly;
     top: 380px;
-    left: 990px;
+    left: 1060px;
 
     font-style: normal;
     font-weight: 400;
@@ -175,16 +175,18 @@ body {
 
 .bathroompage-row {
   border-radius: 15px;
-  margin-top: 30px;
-  margin-left: 240px;
-  margin-bottom: 120px;
-  background-color: #fcfcfc;
-  max-width: 200px;
-  max-height: 200px;
-  width: 200px;
-  height: 200px;
+  margin: auto;
+  //background-color: #fcfcfc;
+ 
   
   .bathroom-page-row-profile {
+    margin-top: 30px;
+    margin-left: 310px;
+    padding-right: 10px;
+    //margin-bottom: 120px;
+    //max-height: 200px;
+    max-width: 200px;
+
     .image-container {
       position: relative;
       display: flex;
@@ -239,17 +241,25 @@ body {
   }
   
   .bathroom-page-row-review {
+    margin-top: 30px;
+    //margin-bottom: 120px;
+    //max-height: 200px;
+    max-width: 200px;
+
+
     border-radius: 15px;
-    margin-left: 250px;
+    margin-left: 320px;
     margin-top: -190px;
     background-color: #fcfcfc;
     max-width: 760px;
     min-height: 220px;
+
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    width: 760px;
+    padding-left: 200px;
+    padding-right: 80px;
+
+    width: 800px;
     height: auto;
 
     .text {
