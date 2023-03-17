@@ -137,7 +137,7 @@ function BathroomPage(isAuth) {
 
               <p className='cleanliness'>Cleanliness                  <strong>{truncateDecimals(bathroomData.score_cleanliness,1)}</strong></p>
               <p className='comfort'>Comfort                        <strong>{truncateDecimals(bathroomData.score_comfort,1)}</strong></p>
-              <p className='convenience'>Convience                    <strong>{truncateDecimals(bathroomData.score_convenience,1)}</strong></p>
+              <p className='convenience'>Convenience                    <strong>{truncateDecimals(bathroomData.score_convenience,1)}</strong></p>
               <p className='ameneties'>Ameneties                    <strong>{truncateDecimals(bathroomData.score_amenities,1)}</strong></p>
             </div>
 
