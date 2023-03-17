@@ -109,6 +109,9 @@ body {
                     margin-top: 10px;
                     margin-left: -15px;
                 }
+                input[type="checkbox"] {
+                    cursor: pointer;
+                }
             }
         }
         .dropdown {
@@ -118,12 +121,18 @@ body {
             color: #6D6D6D;
             margin-bottom: 20px;
         }
+        .dropdown:hover{
+            cursor: pointer;
+        }
         .slider {
             // input {
             //     padding: 0px;
             //     margin: auto;
             //     width: 82%;
             // }
+            .horizontal-slider:hover{
+                cursor: pointer;
+            }
             .horizontal-slider {
                 // border-style: solid;
                 margin: auto;
