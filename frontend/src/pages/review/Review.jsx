@@ -132,7 +132,7 @@ function Review({ isAuth }) {
 
         <box className="background-box-review">
           <div class="review">
-            <div class="text cleanliness">
+            <div class="review-info cleanliness">
               <h3>Rate the cleanliness</h3>
               How clean was your experience? Consider the sinks, floor, walls,
               stalls, and toilets.
@@ -143,7 +143,7 @@ function Review({ isAuth }) {
           </div>
 
           <div class="review">
-            <div class="text comfort">
+            <div class="review-info comfort">
               <h3>Rate the comfort</h3>
               How comfortable did the bathroom seem? Consider lighting, seating,
               or the layout of the bathroom.
@@ -154,7 +154,7 @@ function Review({ isAuth }) {
           </div>
 
           <div class="review">
-            <div class="text convenience">
+            <div class="review-info convenience">
               <h3>Rate the convenience</h3>
               How easy was the bathroom to find? Factor in location the
               bathroom, or other convenience factors such as ease of use of the
@@ -166,7 +166,7 @@ function Review({ isAuth }) {
           </div>
 
           <div class="review">
-            <div class="text amenities">
+            <div class="review-info amenities">
               <h3>Rate the amenities</h3>
               What was the supply of toilet paper and other amenities? Consider
               the supplies of soap, seat coverings, feminine products (if
