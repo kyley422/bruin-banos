@@ -48,13 +48,6 @@ const FavoriteListings = () => {
             <div className='favorite-box'>
             <UserFavoriteListings />
             </div>
-            {/* <div className='listing-container'>
-                <div className='favorites-list'>
-                     <BathroomListings className='bathroom-listing'/>             
-                </div>
-                <div className='filter-container'>
-                    Filters
-                </div> */}
         </div>
 
     )
@@ -71,16 +64,7 @@ const ReviewListings = () => {
         </div>
     )
 }
-// const ListingContainer = () => {
-//     return (
-//       <div className='listing-container'>
-//         <div className='filter-container'>
-//           Filters
-//         </div>
-//       <BathroomListings />
-//       </div>
-//     )
-//   }
+
 
 export default class UserPage extends Component {
   render() {

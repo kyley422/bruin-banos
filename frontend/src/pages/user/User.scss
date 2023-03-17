@@ -3,7 +3,7 @@
         margin-top: 85px;
         padding-left: 22%;
         color: #2774AE;
-        width: 100%;
+        // width: 100%;
         height: auto;
         font-size: 250%;
         // float: left;
@@ -11,19 +11,63 @@
         
         // text-align: center;
         // margin-right: 2000px;
-        }
+    }
     .favorites {    
-        margin-top: 60px;
-        padding-left: 22%;
-        .listing-container {
-            .favorites-list {
-                // float: left;
-                display: flex;
-            }
-            .filter-container {
-                // float: right;
-            }
+        margin-top: 30px;
+
+        .favorites-text {
+            padding-left: 22%;
+            font-size: 150%;
         }
+
+        .favorite-box {
+            padding-left: 22%;
+            width: 50%;
+            // padding-right: 22%;
+            // margin-right: 22%;
+            .bathroom-row {
+                  border-color: green;
+                  border-radius: 1px;
+                  border-style: solid;
+                  
+            }
+            .image-container {
+                // border-style: solid;
+                // border-color: red;
+            
+                // display: flex;
+                // max-width: none;
+                aspect-ratio: 1/1;
+                width: 13.5%;
+                min-width: 13.5%;
+            
+                margin-left: 18px;
+                margin-top: 21px;
+                padding-bottom: 21px;
+            
+                justify-content: center;
+                img {
+                  border-radius: 15px;
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                }
+              }
+            //   .overall-review-container 
+        }
+
+
+    }
+    .reviews {
+        .reviews-text {
+            padding-left: 22%;
+            font-size: 150%;
+
+        }
+
+        // .review-box {
+            
+        // }
     }
     
     // .listing-container {
