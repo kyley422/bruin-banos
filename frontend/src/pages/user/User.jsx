@@ -43,7 +43,7 @@ const FavoriteListings = () => {
     return (
         <div className='favorites'>
             <div className='favorites-text'>
-                <h3>Favorites</h3>
+                <h2>Favorites</h2>
             </div>
             <div className='favorite-box'>
             <UserFavoriteListings />
@@ -57,7 +57,7 @@ const ReviewListings = () => {
     return (
         <div className='reviews'>
             <div className='reviews-text'>
-                <h3>Reviews</h3>
+                <h2>Reviews</h2>
             </div>
             <div className='review-box'></div>
             <UserReviewsListings />
