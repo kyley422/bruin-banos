@@ -22,7 +22,9 @@
 
         .favorite-box {
             padding-left: 22%;
-            width: 50%;
+            //width: 50%;
+            width: 750px;
+            height: 200px;
             // padding-right: 22%;
             // margin-right: 22%;
             .bathroom-row {
@@ -47,7 +49,7 @@
             
                 justify-content: center;
                 img {
-                  border-radius: 15px;
+                  // border-radius: 15px;
                   width: 100%;
                   height: 100%;
                   object-fit: cover;
