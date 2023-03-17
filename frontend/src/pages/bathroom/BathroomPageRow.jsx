@@ -7,7 +7,7 @@ export default class BathroomPageRow extends Component {
       <div className='bathroompage-row'>
         <div className='bathroom-page-row-profile'>
           <div className='image-container'>
-            <img src='https://i.imgur.com/YcXGNzZ.png' />
+            <img src='https://i.imgur.com/CE7Mopo.png' />
           </div>
           <div className='review_name'>
             <p className='Name'>{this.props.name} </p>
