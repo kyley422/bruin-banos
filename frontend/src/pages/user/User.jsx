@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 // import BathroomRow from '../../components/BathroomRow'
 import BathroomListings from '../../components/BathroomListings'
 import './User.scss'
+import UserFavoriteListings from './UserFavoriteListings';
+import UserReviewsListings from './UserReviewsListings';
 
 // import { signInWithGoogle } from '../login/Login'
 // const Hero = () => {
@@ -27,42 +29,42 @@ import './User.scss'
 const Welcome = () => {
 
     var firstName = (localStorage.getItem("name").split(" "))[0];
-    console.log(firstName);
+    // console.log(firstName);
     return (
         <div className='welcome'> 
-            <h1>Welcome Back, {firstName}</h1>
+            <div className='welcome-text'>
+                <h1>Welcome Back, {firstName}</h1>
+            </div>
         </div>
     )
 }
 
-const Favorites = () => {
+const FavoriteListings = () => {
     return (
         <div className='favorites'>
             <div className='favorites-text'>
-                <h3>Favorites</h3>
+                <h2>Favorites</h2>
             </div>
-            <div className='listing-container'>
-                <div className='favorites-list'>
-                    <BathroomListings className='bathroom-listing'/>            
-                </div>
-                <div className='filter-container'>
-                    Filters
-                </div>
+            <div className='favorite-box'>
+            <UserFavoriteListings />
             </div>
+        </div>
+
+    )
+}
+
+const ReviewListings = () => {
+    return (
+        <div className='reviews'>
+            <div className='reviews-text'>
+                <h2>Reviews</h2>
+            </div>
+            <div className='review-box'></div>
+            <UserReviewsListings />
         </div>
     )
 }
 
-// const ListingContainer = () => {
-//     return (
-//       <div className='listing-container'>
-//         <div className='filter-container'>
-//           Filters
-//         </div>
-//       <BathroomListings />
-//       </div>
-//     )
-//   }
 
 export default class UserPage extends Component {
   render() {
@@ -70,7 +72,9 @@ export default class UserPage extends Component {
       <div className='user-page'>
         <Welcome />
         {/* <ListingContainer /> */}
-        <Favorites />
+        <FavoriteListings />
+        <ReviewListings />
+        {/* <UserFavoriteListings></UserFavoriteListings> */}
 
       </div>
     )

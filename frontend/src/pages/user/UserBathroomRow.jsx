@@ -1,7 +1,7 @@
 import React, { Component, useState } from 'react'
-import './BathroomRow.scss'
+import '../../components/BathroomRow.scss'
 import { getDocs, updateDoc, collection, arrayRemove, setDoc, doc, arrayUnion, query, where } from 'firebase/firestore'
-import { db, auth } from '../firebase-config';
+import { db, auth } from '../../firebase-config';
 import { Link } from 'react-router-dom'
 
 
@@ -128,15 +128,6 @@ export default class BathroomRow extends Component {
         </div>
         <div className='ratings'>
             CLEANLINESS  <b>{this.props.score_cleanliness}</b> | COMFORT <b>{this.props.score_comfort}</b> | CONVENIENCE <b>{this.props.score_convenience}</b> | AMENITIES <b>{this.props.score_amenities}</b>
-        </div>
-        <div className='top-review'>
-            <div className='top-review-bubble'>
-                <img src='https://i.imgur.com/dbIsoVp.png' alt='Top Review' />
-            </div>
-            <p className='top-review-splash'>TOP REVIEW</p>
-        </div>
-        <div className='top-review-container'>
-            {this.props.top_review}
         </div>
       </div>
     )
