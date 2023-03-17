@@ -120,7 +120,7 @@ function Review({ isAuth }) {
   return (
     <div>
       <div>
-        <h1>Write a review for {bathroomName}</h1>
+        <h1 className="write-review-title">Write a review for {bathroomName}</h1>
         <head>
           <link
             href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
