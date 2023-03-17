@@ -14,12 +14,13 @@ import { db, auth } from "../../firebase-config";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 import StarRating from "./StarRating";
+import { FaStar } from "react-icons/fa";
 import "./Review.scss";
 
 function Review({ isAuth }) {
-  const [bathroom, setBathroom] = useState("");
+  //const [bathroom, setBathroom] = useState("");
   const [reviewText, setReviewText] = useState("");
-  const [overall, setOverall] = useState("");
+  //const [overall, setOverall] = useState("");
   const [cleanliness, setCleanliness] = useState("");
   const [comfort, setComfort] = useState("");
   const [convenience, setConvenience] = useState("");
@@ -46,7 +47,9 @@ function Review({ isAuth }) {
   }, []);
 
   // auth.currentUser.displayName and uid are google account information we can use
+
   const createReview = async () => {
+    const overall = (cleanliness + comfort + convenience + amenities) / 4;
     let newReview = await addDoc(reviewsCollectionRef, {
       bathroom: bathroomName,
       overall: overall,
@@ -120,7 +123,7 @@ function Review({ isAuth }) {
   return (
     <div>
       <div>
-        <h1>Write a review for {bathroomName}</h1>
+        <h1 className="write-review-title">Write a review for {bathroomName}</h1>
         <head>
           <link
             href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
@@ -132,64 +135,74 @@ function Review({ isAuth }) {
 
         <box className="background-box-review">
           <div class="review">
-            <div class="text cleanliness">
+            <div class="review-info cleanliness">
               <h3>Rate the cleanliness</h3>
               How clean was your experience? Consider the sinks, floor, walls,
               stalls, and toilets.
             </div>
             <div class="starRating">
-              <StarRating></StarRating>
+              <StarRating
+                rating={cleanliness}
+                setRating={setCleanliness}
+              ></StarRating>
             </div>
           </div>
 
           <div class="review">
-            <div class="text comfort">
+            <div class="review-info comfort">
               <h3>Rate the comfort</h3>
               How comfortable did the bathroom seem? Consider lighting, seating,
               or the layout of the bathroom.
             </div>
             <div class="starRating">
-              <StarRating></StarRating>
+              <StarRating rating={comfort} setRating={setComfort}></StarRating>
             </div>
           </div>
 
           <div class="review">
-            <div class="text convenience">
+            <div class="review-info convenience">
               <h3>Rate the convenience</h3>
               How easy was the bathroom to find? Factor in location the
               bathroom, or other convenience factors such as ease of use of the
               facilities.
             </div>
             <div class="starRating">
-              <StarRating></StarRating>
+              <StarRating
+                rating={convenience}
+                setRating={setConvenience}
+              ></StarRating>
             </div>
           </div>
 
           <div class="review">
-            <div class="text amenities">
+            <div class="review-info amenities">
               <h3>Rate the amenities</h3>
               What was the supply of toilet paper and other amenities? Consider
               the supplies of soap, seat coverings, feminine products (if
               applicable).
             </div>
             <div class="starRating">
-              <StarRating></StarRating>
+              <StarRating
+                rating={amenities}
+                setRating={setAmenities}
+              ></StarRating>
             </div>
           </div>
-        </box>
 
-        <div>
+          <div class="commentYourThoughts">
+            <h3>Comment your thoughts</h3>
+          </div>
           <textarea
-            className="comment"
-            placeholder="Review..."
+            class="comment"
+            placeholder=" Write your review here..."
             onChange={(event) => {
               setReviewText(event.target.value);
             }}
           />
+        </box>
+        <div class="next">
+          <button onClick={createReview}>Submit</button>
         </div>
-        <button className="next" onClick={createReview}>
-          Submit
-        </button>
       </div>
     </div>
   );

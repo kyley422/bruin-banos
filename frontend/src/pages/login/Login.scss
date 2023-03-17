@@ -1,10 +1,11 @@
 .textbox{
     position: absolute;
     width: 350px;
-    height: 62px;
-    left: 120px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    //left: 120px;
     //top: 221px;
-    font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
     font-size: 40px;
@@ -16,32 +17,34 @@
 
 .login-with-google-btn{
     position: absolute;
-    width: 455px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 450px;
     height: 86px;
-    left: 42px;
+    //left: 42px;
+    margin-left: auto;
+    margin-right: auto;
     top: 120px;
     background: #DB4437;
     border: none;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
-    font-family: 'Inter';
-    
-    font-style: normal;
-    font-weight: 700;
     font-size: 40px;
-    line-height: 48px;
-    text-align: center;
-
     color: #F8F8F8;
 }
 
 .background-box{
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 584px;
     height: 262px;
-    left: 428px;
-    top: 188px;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: #FCFCFC;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;

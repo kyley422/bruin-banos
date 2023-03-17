@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
-const StarRating = ({ rating, setRating }) => {
-  //const [rating, setRating] = useState(null);
+const CleanRating = () => {
+  const [cleanliness, setCleanliness] = useState(null);
   const [hover, setHover] = useState(null);
 
   return (
@@ -32,4 +32,4 @@ const StarRating = ({ rating, setRating }) => {
   );
 };
 
-export default StarRating;
+export default CleanRating;

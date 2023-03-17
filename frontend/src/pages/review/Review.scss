@@ -1,5 +1,9 @@
-h1{
+.write-review-title {
     padding-left: 186px;
+    color: #2774AE;
+}
+h3{
+
     color: #2774AE;
 }
 i {
@@ -30,7 +34,7 @@ input[type="radio"] {
     
  }
  
- .text{
+ .review-info {
     padding-top: 30px;
     word-wrap: normal; 
     max-width: 500px; 
@@ -43,6 +47,12 @@ input[type="radio"] {
     justify-content: space-between;
     align-items: center;
     color:#FFD100
+ }
+
+ .commentYourThoughts{
+    display: flex;
+    padding-left: 50px;
+    padding-top: 30px;
  }
 
 .background-box-review{
@@ -70,10 +80,10 @@ input[type="radio"] {
     box-sizing: border-box;
 
     position: absolute;
-    width: 988px;
+    width: 970px;
     height: 361px;
-    left: 226px;
-    top: 800px;
+    left: 50px;
+    top: 660px;
 
     background: #FFFFFF;
     border: 2px solid #8BB8E8;
@@ -84,9 +94,12 @@ input[type="radio"] {
 
 .next {
     position: absolute;
-    left: 51.6%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    left: 50%;
    // right: 41.47%;
-    top: 800px;
+    top: 1200px;
    // bottom: 9.57%;
 
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
