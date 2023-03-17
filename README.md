@@ -8,7 +8,7 @@ Bruin Baños requires npm. See https://www.npmjs.com/ for installation instructi
 To run Bruin Baños on your system, clone the GitHub repository onto your local machine and install the dependencies.
 ```
 git clone https://github.com/kyley422/bruin-banos.git
-cd bruin-banos
+cd bruin-banos/source
 npm install
 ```
 Once dependencies are installed, run Bruin Baños:
