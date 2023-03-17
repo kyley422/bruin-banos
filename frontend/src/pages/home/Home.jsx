@@ -33,7 +33,7 @@ const ListingContainer = ( {isAuth} ) => {
   const [neutralIsChecked, setNeutralIsChecked] = useState(true);
   const [sortParam, setSortParam] = useState("Overall");
   const [upperLimit, setUpperLimit] = useState(5);
-  const [lowerLimit, setLowerLimit] = useState(1);
+  const [lowerLimit, setLowerLimit] = useState(0);
   const [searchParams] = useSearchParams();
   var searchText = searchParams.get('search') ? searchParams.get('search') : "";
 
@@ -47,8 +47,13 @@ const ListingContainer = ( {isAuth} ) => {
     setNeutralIsChecked(!neutralIsChecked)
   }
   function sliderHandleOnChange(values) {
+    if (parseInt(values[0]) == 1) {
+      setLowerLimit(0)
+    }
+    else {
+      setLowerLimit(parseInt(values[0]));
+    }
     setUpperLimit(parseInt(values[1]));
-    setLowerLimit(parseInt(values[0]));
   }
 
   return (
