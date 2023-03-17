@@ -14,12 +14,13 @@ import { db, auth } from "../../firebase-config";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 import StarRating from "./StarRating";
+import { FaStar } from "react-icons/fa";
 import "./Review.scss";
 
 function Review({ isAuth }) {
-  const [bathroom, setBathroom] = useState("");
+  //const [bathroom, setBathroom] = useState("");
   const [reviewText, setReviewText] = useState("");
-  const [overall, setOverall] = useState("");
+  //const [overall, setOverall] = useState("");
   const [cleanliness, setCleanliness] = useState("");
   const [comfort, setComfort] = useState("");
   const [convenience, setConvenience] = useState("");
@@ -46,7 +47,9 @@ function Review({ isAuth }) {
   }, []);
 
   // auth.currentUser.displayName and uid are google account information we can use
+
   const createReview = async () => {
+    const overall = (cleanliness + comfort + convenience + amenities) / 4;
     let newReview = await addDoc(reviewsCollectionRef, {
       bathroom: bathroomName,
       overall: overall,
@@ -138,7 +141,10 @@ function Review({ isAuth }) {
               stalls, and toilets.
             </div>
             <div class="starRating">
-              <StarRating></StarRating>
+              <StarRating
+                rating={cleanliness}
+                setRating={setCleanliness}
+              ></StarRating>
             </div>
           </div>
 
@@ -149,7 +155,7 @@ function Review({ isAuth }) {
               or the layout of the bathroom.
             </div>
             <div class="starRating">
-              <StarRating></StarRating>
+              <StarRating rating={comfort} setRating={setComfort}></StarRating>
             </div>
           </div>
 
@@ -161,7 +167,10 @@ function Review({ isAuth }) {
               facilities.
             </div>
             <div class="starRating">
-              <StarRating></StarRating>
+              <StarRating
+                rating={convenience}
+                setRating={setConvenience}
+              ></StarRating>
             </div>
           </div>
 
@@ -173,23 +182,27 @@ function Review({ isAuth }) {
               applicable).
             </div>
             <div class="starRating">
-              <StarRating></StarRating>
+              <StarRating
+                rating={amenities}
+                setRating={setAmenities}
+              ></StarRating>
             </div>
           </div>
-        </box>
 
-        <div>
+          <div class="commentYourThoughts">
+            <h3>Comment your thoughts</h3>
+          </div>
           <textarea
-            className="comment"
-            placeholder="Review..."
+            class="comment"
+            placeholder=" Write your review here..."
             onChange={(event) => {
               setReviewText(event.target.value);
             }}
           />
+        </box>
+        <div class="next">
+          <button onClick={createReview}>Submit</button>
         </div>
-        <button className="next" onClick={createReview}>
-          Submit
-        </button>
       </div>
     </div>
   );
