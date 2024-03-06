@@ -1,7 +1,7 @@
 # Bruin Baños
-![Bruin Baños](https://i.imgur.com/vR0CIB2.png)
-
 Bruin Baños is a web app built for ranking restrooms on UCLA campus. Students rate their experiences with restrooms, and can submit reviews to other students. With Bruin Baños, users can make an informed decision on which campus restroom to use.
+
+![Bruin Baños](https://i.imgur.com/vR0CIB2.png)
 
 ## Installation 
 Bruin Baños requires npm. See https://www.npmjs.com/ for installation instructions.
